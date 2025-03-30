@@ -1,5 +1,6 @@
 package com.registerServlet;
 
+
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,9 +26,11 @@ public class registerServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+
         String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
         String allPassword = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
         String userInterest = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInterest.txt";
+
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -38,6 +41,7 @@ public class registerServlet extends HttpServlet {
         String dateOfBirth = request.getParameter("birthDate");
         String gender = request.getParameter("gender");
         String role = request.getParameter("role");
+        String data = request.getParameter("time");
 
         // Handling multiple selection interests
         String[] interests = request.getParameterValues("interests");
@@ -68,6 +72,8 @@ public class registerServlet extends HttpServlet {
                 }
             }
             registerSuccess = true;
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -89,8 +95,8 @@ public class registerServlet extends HttpServlet {
                 FileWriter userPass = new FileWriter(allPassword, true);
                 FileWriter userInterestTopic = new FileWriter(userInterest, true)
         ) {
-            userInfor.write(firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
-            userPass.write(username + "\t" + email + "\t" + password + "\n");
+            userInfor.write(data +"\t"+ username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
+            userPass.write(username + "\t" + email + "\t" + password +"\t" + role + "\n");
             userInterestTopic.write(username + "\t" + interestsList + "\n");
 
             System.out.println("Register Success ... ");

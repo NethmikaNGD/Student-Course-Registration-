@@ -1,1 +1,4 @@
-dineth42	dinethnethmika3@gmail.com	0811
+dineth42	dinethnethmika3@gmail.com	1234	Instructor
+oma	HarryLoveHermione199@hogwarts.com	0811	Student
+Sis@200.comuruLK	susa@gg.lk	0000	Student
+oliver	it241010666@my.sliit.lk	1234	Instructor

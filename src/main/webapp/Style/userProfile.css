@@ -1,0 +1,116 @@
+
+.content, .userContac {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-flow: row dense;
+}
+
+
+.editIcon{
+    background-color: #20A8CD ;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.editIcon:hover{
+    background-color: #004052;
+}
+.trash{
+    background-color: #FF4B4E;
+}
+.trash:hover{
+    background-color: #D12729;
+}
+
+
+/* start here */
+.userInfor{
+    margin: 30px;
+}
+.nameContainer{
+    display: flex ;
+    justify-content: space-between;
+    margin: 10px 0 20px 20px;
+}
+.userProfilePic{
+    width: 225px;
+    height: 214px;
+    vertical-align: super;
+    background-size: cover;
+    border-radius: 12px;
+}
+.userName .userNameTxt{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 40px ;
+}
+.userName .userTitle{
+    font-family: sans-serif;
+    opacity: .5;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.editBtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.editIcon{
+    top: 50%;
+    left: 50%;
+}
+.contacInfor .userContac .infor li{
+    opacity: .6;
+}
+
+.contacInfor .userContac .infor li ,
+.contacInfor .userContac .infor1 li  {
+    text-decoration: none;
+    list-style: none;
+}
+
+
+/* couserContainer */
+
+.headerName .headerText{
+    font-family: sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #004052;
+    margin: 25px;
+}
+
+.courseContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+    align-items: center;
+    background-color: #C8E9F2;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.courseHeader .couserTitle{
+    font-size: 25px;
+    color: #004052;
+    font-weight:600;
+    text-align: center;
+}
+.enrollCount{
+    font-size: 25px;
+    color: #004052;
+    font-weight:600;
+    text-align: center;
+}
+.earning{
+    font-size: 25px;
+    color: #004052;
+    font-weight:600;
+    text-align: center;
+}

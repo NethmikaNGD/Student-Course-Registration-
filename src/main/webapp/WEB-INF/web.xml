@@ -1,26 +1,54 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd">
-
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
-  <!-- Display Name -->
   <display-name>Archetype Created Web Application</display-name>
 
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.loginServlet.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>Register</servlet-name>
     <servlet-class>com.registerServlet.registerServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>Register</servlet-name>
     <url-pattern>/registerServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Home</servlet-name>
+    <servlet-class>com.homeServlet.homeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home</servlet-name>
+    <url-pattern>/homeServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>com.profileServlet.profileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/profileServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>createCourseServlet</servlet-name>
+    <servlet-class>com.createCourseServlet.createCourseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createCourseServlet</servlet-name>
+    <url-pattern>/createCourseServlet</url-pattern>
+  </servlet-mapping>
 
   <context-param>
     <description>Location to store uploaded files</description>
@@ -28,16 +56,4 @@
     <param-value>D:\Project\LMS\src\main\webapp\image</param-value>
   </context-param>
 
-
 </web-app>
-
-<!--<web-app>-->
-<!--  <servlet>-->
-<!--    <servlet-name>registerServlet</servlet-name>-->
-<!--    <servlet-class>com.registerServlet.registerServlet</servlet-class>-->
-<!--  </servlet>-->
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>registerServlet</servlet-name>-->
-<!--    <url-pattern>/RegisterServlet</url-pattern>-->
-<!--  </servlet-mapping>-->
-<!--</web-app>-->

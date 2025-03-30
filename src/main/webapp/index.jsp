@@ -39,13 +39,6 @@
 
             <button type="submit"  >Login</button>
 
-            <%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
-            <%
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String dateTime = formatter.format(new Date());
-            %>
-            Hello there!!! The time is <%= dateTime %>
-
 
 
             <div >

@@ -1,0 +1,87 @@
+* a{
+    text-decoration: none;
+}
+.displaycourseArea{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px; /* Prevents too wide layouts */
+    margin: auto; /* Centers the grid */
+}
+.allContainer{
+    background-color: white;
+    width:270px;
+   min-height: 420px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px .3px #595858;
+    display: flex;
+    flex-direction: column;
+}
+.allContainer .textContainer {
+    padding: 10px;
+    flex-grow: 1; /* Allows the text container to expand */
+}
+
+.courseimg{
+    margin: 10px;
+    border-radius: 12px;
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+}
+.allContainer .textContainer,
+.allContainer .bottonBar{
+    padding: 10px;
+}
+
+.header{
+    margin: 0px 0px 5px 0px;
+}
+.authur{
+    opacity: .6;
+    font-weight: bold;
+    font-size: 16px;
+}
+.dis{
+    font-size: 14px;
+    margin:10px 0px 0px 0px;
+    word-wrap: break-word; /* Prevents overflow issues */
+    overflow-wrap: break-word; /* Ensures long words break */
+}
+.bottonBar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    margin-top: auto;
+
+}
+.priceOne{
+    font-weight: bold;
+}
+.buyBar {
+    background-color: #027373;
+    height: 40px;
+    width: 180px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.enroll{
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.buyBar:hover{
+    background-color: #146179;
+}

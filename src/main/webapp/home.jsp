@@ -52,29 +52,6 @@
     <link rel="stylesheet" href="Style/Navstyle.css">
     <link rel="stylesheet" href="Style/courseCard.css">
 
-    <style>
-        /*!* Parent container for courses *!*/
-        /*.course_container {*/
-        /*    display: flex;*/
-        /*    flex-wrap: wrap; !* Allows cards to wrap on smaller screens *!*/
-        /*    gap: 20px; !* Space between cards *!*/
-        /*    justify-content: center; !* Centers the cards *!*/
-        /*}*/
-        /*!* Course card styling *!*/
-        /*.course_card {*/
-        /*    width: 300px; !* Fixed width for proper alignment *!*/
-        /*    background: white;*/
-        /*    border-radius: 8px;*/
-        /*    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);*/
-        /*    padding: 15px;*/
-        /*}*/
-        /*!* Ensuring images load properly *!*/
-        /*.cardImage img {*/
-        /*    width: 100%;*/
-        /*    height: auto;*/
-        /*    border-radius: 8px;*/
-        /*}*/
-    </style>
 </head>
 <body>
 
@@ -107,63 +84,49 @@
     </div>
 </nav>
 
-<%--<!-- Course Container -->--%>
-<%--<div class="course_container">--%>
-<%--    <%--%>
-<%--        String dataFile = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";--%>
-<%--        File file = new File(dataFile);--%>
-<%--        if (file.exists()) {--%>
-<%--            BufferedReader read = new BufferedReader(new FileReader(file));--%>
-<%--            String data;--%>
-<%--            while ((data = read.readLine()) != null) {--%>
-<%--                String[] details = data.split("\t");--%>
-<%--                if (details.length == 8) {--%>
-<%--                    String courseImage = "image/" + details[6]; // Ensure image path is correct--%>
-<%--    %>--%>
-<%--    <div class="allContainer">--%>
-<%--        <div class="image">--%>
-<%--            <img class="courseimg" src="image/<%= details[5] %>" alt="Course Image">--%>
+<!-- Course Container -->
+<div class="displaycourseArea">
+    <%
+        String dataFile = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
+        File file = new File(dataFile);
+        if (file.exists()) {
+            BufferedReader read = new BufferedReader(new FileReader(file));
+            String data;
+            while ((data = read.readLine()) != null) {
+                String[] details = data.split("\t");
+                if (details.length == 8) {
 
-<%--        </div>--%>
-<%--        <div class="textContainer">--%>
-<%--            <h2 class="header"> <%=details[1]%> </h2>--%>
-<%--            <p class="authur"><%=details[3]%></p>--%>
-<%--            <p class="dis"><%=details[2]%></p>--%>
-<%--        </div>--%>
-<%--        <div class="bottonBar">--%>
-<%--            <div class="price">--%>
-<%--                <p class="priceOne"><%=details[4]%></p>--%>
-<%--            </div>--%>
-<%--            <div class="buyBar">--%>
-<%--                <a href="#viewpage" class="enroll">Enroll</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <%--%>
-<%--                }--%>
-<%--            }--%>
-<%--        }--%>
-<%--    %>--%>
-
-<%--</div> <!-- End of course_container -->--%>
-
-
-<div class="allContainer">
-        <img class="courseimg" src="image/courseIMG.png">
-    <div class="textContainer">
-        <h2 class="header">HydroSync Pro Water Bottele</h2>
-        <p class="authur">Dineth Nethmika</p>
-        <p class="dis">Stay on top of your daily watar intake with this innovative battel featuring bulit-in.</p>
-    </div>
-    <div class="bottonBar">
-        <div class="price">
-            <p class="priceOne">$137.0</p>
+                    String courseImage = "image/" + details[6]; // Ensure image path is correct
+                    System.out.println(courseImage);
+    %>
+    <div class="allContainer">
+        <div class="image">
+            <img class="courseimg" src="<%=courseImage%> alt="Course Image">
         </div>
-        <div class="buyBar">
-            <a href="#viewpage" class="enroll">Enroll</a>
+        <div class="textContainer">
+            <h2 class="header"> <%=details[1]%> </h2>
+            <p class="authur"><%=details[3]%></p>
+            <p class="dis"><%=details[2]%></p>
+        </div>
+        <div class="bottonBar">
+            <div class="price">
+                <p class="priceOne">$<%=details[4]%></p>
+            </div>
+            <div class="buyBar">
+                <a href="#viewpage" class="enroll">Enroll</a>
+            </div>
         </div>
     </div>
-</div>
+    <%
+                }
+            }
+        }
+    %>
+
+</div> <!-- End of course_container -->
+
+
+
 </body>
 </html>
 

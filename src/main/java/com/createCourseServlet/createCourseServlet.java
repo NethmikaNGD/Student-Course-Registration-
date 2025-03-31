@@ -47,14 +47,17 @@ public class createCourseServlet extends HttpServlet {
             String imageFileName = filePart.getSubmittedFileName();
 
             // Get file upload directory from web.xml
-            String uploadDirectory = getServletContext().getRealPath("/uploads");
+            String uploadDirectory = "D:\\Project\\LMS\\src\\main\\webapp\\image";
             File uploadDir = new File(uploadDirectory);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
             }
 
             String uploadPath = uploadDirectory + File.separator + imageFileName;
+            System.out.println("Saving file to: " + uploadPath);
             filePart.write(uploadPath);
+            System.out.println("File saved successfully.");
+
 
             // Save Course Data to File
             String filePath = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";

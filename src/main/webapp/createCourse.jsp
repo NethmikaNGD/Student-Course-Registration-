@@ -97,7 +97,27 @@
         <input type="text" name="title" class="form-control" required>
 
         <label>Course Description:</label>
-        <input type="text" name="description" class="form-control des" maxlength="500" size="50" required>
+        <textarea name="description" class="form-control des" id="description" maxlength="100" rows="3" required></textarea>
+        <p id="charCount">0/100 characters used</p>
+
+        <script>
+            const descriptionInput = document.getElementById("description");
+            const charCount = document.getElementById("charCount");
+
+            descriptionInput.addEventListener("input", function () {
+                const currentLength = this.value.length;
+                charCount.textContent = `${currentLength}/150 characters used`;
+
+                // Optional: Prevent user from entering more text when limit is reached
+                if (currentLength >= 100) {
+                    charCount.style.color = "red"; // Warn user when max is reached
+                } else {
+                    charCount.style.color = "black";
+                }
+            });
+        </script>
+
+
 
         <label>Instructor Name:</label>
         <input type="text" name="instructor" class="form-control" required>

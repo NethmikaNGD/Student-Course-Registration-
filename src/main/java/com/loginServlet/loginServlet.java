@@ -6,10 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.jar.JarOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +24,7 @@ public class loginServlet extends HttpServlet {
 
         String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
         String allPassword = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
+        String auditLog = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
 
         boolean loginSuccess = false;
         String role = null;
@@ -68,7 +66,12 @@ public class loginServlet extends HttpServlet {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dateTime = formatter.format(new Date());
 
-            System.out.println(dateTime);
+
+            try(FileWriter logwrite = new FileWriter(auditLog ,true)){
+                logwrite.write(dateTime + "\t" + username + "\t" +role + "\n" );
+            }catch (IOException e){
+                e.printStackTrace();
+            }
 
             RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
             rd.forward(request, response);

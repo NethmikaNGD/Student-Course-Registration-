@@ -41,7 +41,6 @@ public class registerServlet extends HttpServlet {
         String dateOfBirth = request.getParameter("birthDate");
         String gender = request.getParameter("gender");
         String role = request.getParameter("role");
-        String data = request.getParameter("time");
 
         // Handling multiple selection interests
         String[] interests = request.getParameterValues("interests");
@@ -95,7 +94,7 @@ public class registerServlet extends HttpServlet {
                 FileWriter userPass = new FileWriter(allPassword, true);
                 FileWriter userInterestTopic = new FileWriter(userInterest, true)
         ) {
-            userInfor.write(data +"\t"+ username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
+            userInfor.write(username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
             userPass.write(username + "\t" + email + "\t" + password +"\t" + role + "\n");
             userInterestTopic.write(username + "\t" + interestsList + "\n");
 

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.FileReader" %>
+<%@ page import="java.io.IOException" %><%--
   Created by IntelliJ IDEA.
   User: Dinet
   Date: 3/30/2025
@@ -11,17 +13,48 @@
         response.sendRedirect("index.jsp");
         return;
     }
-
     // Retrieve session attributes
     String fName = (String) session.getAttribute("username");
-    String role = (String) session.getAttribute("role");
-    String avatar = (String) session.getAttribute("avatar");
+
+    String username = null;
+    String role = null;
+    String avatar = null;
+    String Uname = null;
+
+    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+
+
+    // Read user information from the file
+    try (BufferedReader readData = new BufferedReader(new FileReader(dataSavePath))) {
+        String line;
+        while ((line = readData.readLine()) != null) {
+            String[] data = line.split("\t");
+            if (data.length < 8) continue; // Prevent ArrayIndexOutOfBoundsException
+
+            Uname = data[0]; // Username in the file
+            if (fName.equals(Uname)) {
+                fName = data[1]; // First name
+                role = data[6];  // Role
+                avatar = data[7];// Avatar file name
+
+                System.out.println(role);
+                //want to display user Avatar pic name
+                System.out.println(avatar);
+                break;
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Something went wrong: " + e.getMessage());
+        response.sendRedirect("index.jsp"); // Redirect to an error page if necessary
+        return;
+    }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
         <title>Title</title>
         <link rel="stylesheet" href="Style/Navstyle.css">
+        <link rel="stylesheet" href="Style/courseRegStyle.css">
     </head>
     <body>
 
@@ -60,39 +93,28 @@
 
     <form action="createCourseServlet" method="post" enctype="multipart/form-data">
 
-    <label>Course Title:</label>
+        <label>Course Title:</label>
         <input type="text" name="title" class="form-control" required>
 
-        <br>
-
         <label>Course Description:</label>
-        <input type="text" name="description" class="form-control" maxlength="500" size="50" required>
-
-        <br>
+        <input type="text" name="description" class="form-control des" maxlength="500" size="50" required>
 
         <label>Instructor Name:</label>
         <input type="text" name="instructor" class="form-control" required>
 
-        <br>
+        <label>Price: $</label>
+        <input type="text" name="price" class="form-control" required>
 
-
-        <label>Price:</label>
-        <input type="number" name="price" class="form-control" required>
-
-        <br>
-
-        <label>Level :</label>
-        <label>
-            <select name="level" required>
-                <option value="Beginner">Beginner Level</option>
-                <option value="Advance">Advance Level</option>
-                <option value="Intermediate">Intermediate Level</option>
-            </select>
-        </label>
+        <label>Level:</label>
+        <select name="level" required>
+            <option value="Beginner">Beginner Level</option>
+            <option value="Advance">Advance Level</option>
+            <option value="Intermediate">Intermediate Level</option>
+        </select>
 
         <div>
             <label>Course Type:</label>
-            <div>
+            <div class="course-type-container">
                 <input type="checkbox" id="math" name="interests" value="Mathematics">
                 <label for="math">Mathematics</label>
 
@@ -120,15 +142,31 @@
         </div>
 
 
-
         <label>Upload Course Image:</label>
-        <input type="file" name="image" class="form-control" accept="image/*" required>
+        <input type="file" name="image" class="form-control" accept="image/*" id="imageUpload" required>
 
-        <br>
+        <!-- Preview Container -->
+        <div id="preview-container">
+            <img id="preview" alt="Course Thumbnail Preview">
+        </div>
 
-
-        <button type="submit" class="btn btn-success mt-3 w-100">Create Course</button>
+        <button type="submit" class="btn">Create Course</button>
     </form>
+
+    <!-- JavaScript for Image Preview -->
+    <script>
+        document.getElementById("imageUpload").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("preview").src = e.target.result;
+                    document.getElementById("preview").style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
     </body>
 </html>

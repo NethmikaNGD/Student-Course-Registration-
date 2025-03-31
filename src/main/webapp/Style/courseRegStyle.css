@@ -1,0 +1,105 @@
+/* General form styling */
+form {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Input fields */
+.form-control, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+}
+
+/* Checkbox styles */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Checkbox container */
+/* Course Type Section */
+.course-type-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Custom Checkbox Styling */
+.course-type-container input[type="checkbox"] {
+    display: none; /* Hide default checkboxes */
+}
+
+.course-type-container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+/* Checked State */
+.course-type-container input[type="checkbox"]:checked + label {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+/* Upload image preview */
+input[type="file"] {
+    margin-top: 10px;
+}
+
+#preview-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#preview {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Submit button */
+.btn {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #0056b3;
+}

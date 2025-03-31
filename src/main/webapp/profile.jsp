@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.FileReader" %>
+<%@ page import="java.io.IOException" %><%--
   Created by IntelliJ IDEA.
   User: Dinet
   Date: 3/29/2025
@@ -12,10 +14,41 @@
         response.sendRedirect("index.jsp");
         return;
     }
-
     // Retrieve session attributes
-    String role = (String) session.getAttribute("role");
-    String avatar = (String) session.getAttribute("avatar");
+    String fName = (String) session.getAttribute("username");
+
+    String username = null;
+    String role = null;
+    String avatar = null;
+    String Uname = null;
+
+    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+
+
+    // Read user information from the file
+    try (BufferedReader readData = new BufferedReader(new FileReader(dataSavePath))) {
+        String line;
+        while ((line = readData.readLine()) != null) {
+            String[] data = line.split("\t");
+            if (data.length < 8) continue; // Prevent ArrayIndexOutOfBoundsException
+
+            Uname = data[0]; // Username in the file
+            if (fName.equals(Uname)) {
+                fName = data[1]; // First name
+                role = data[6];  // Role
+                avatar = data[7];// Avatar file name
+
+                System.out.println(role);
+                //want to display user Avatar pic name
+                System.out.println(avatar);
+                break;
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Something went wrong: " + e.getMessage());
+        response.sendRedirect("index.jsp"); // Redirect to an error page if necessary
+        return;
+    }
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

@@ -1,4 +1,8 @@
 <%@ page import="java.util.Objects" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.FileReader" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -7,87 +11,159 @@
         response.sendRedirect("index.jsp");
         return;
     }
-
     // Retrieve session attributes
     String fName = (String) session.getAttribute("username");
-    String role = (String) session.getAttribute("role");
-    String avatar = (String) session.getAttribute("avatar");
-%>
 
-<html>
-    <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="Style/Navstyle.css">
-        <link rel="stylesheet" href="Style/cardstyle.css">
-    </head>
-    <body>
+    String username = null;
+    String role = null;
+    String avatar = null;
+    String Uname = null;
 
-    <!--Navigation bar -->
-        <nav>
-            <div class="webHeader">
-                <h2 class="headerTxt"> ./EnrollEdu</h2>
-            </div>
-            <div class="searchBar">
-                <input class="navSearch"  placeholder="Find your Interest Subjects" name="userWant" >
-            </div>
-            <div class="navLink">
-                <ul>
-                    <li><a class="" href="home.jsp">Home</a></li>
-                    <li><a class="" href="#course">Course</a></li>
-                    <li><a class="" href="#about">About</a></li>
-                </ul>
-            </div>
+    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
 
-            <div class="instuctorBtn">
-                <% if ("Instructor".equals(role)) { %>
-                <a class="btn" href="createCourse.jsp">Create course</a>
-                <% } %>
-            </div>
 
-            <div class="profile">
-                <img class="avatar" src="./image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="User Avatar" width="40" height="40">
-                <div class="profile-dropdown">
-                    <a href="profile.jsp">User Profile</a>
-                    <a href="#enrolled">Enrolled Courses</a>
-                    <a href="index.jsp">Logout</a>
-                </div>
-            </div>
-        </nav>
+    // Read user information from the file
+    try (BufferedReader readData = new BufferedReader(new FileReader(dataSavePath))) {
+        String line;
+        while ((line = readData.readLine()) != null) {
+            String[] data = line.split("\t");
+            if (data.length < 8) continue; // Prevent ArrayIndexOutOfBoundsException
 
-    <!--Navigation bar -->
-    <!--Course Card -->
+            Uname = data[0]; // Username in the file
+            if (fName.equals(Uname)) {
+                fName = data[1]; // First name
+                role = data[6];  // Role
+                avatar = data[7];// Avatar file name
 
-    <div class="course_card">
-        <div class="cardContainer">
-            <div class="cardImage">
-                <img class="cardAvatar" src="image/courseIMG.png">
-            </div>
-            <div class="profile">
-                <div class="profileAvata">
-                    <img class="profilePic" src="image/gg.jpg">
-                    <p class="userName">Dineth Nethmika</p>
-                </div>
-                <div class="courseTitle">
-                    <p class="titleText">Science</p>
-                </div>
-            </div>
-            <div class="cardHeader">
-                <h3 class="headerText">Data Science and Machine Learning with Python:
-                    Hand On!</h3>
-            </div>
-            <div class="enrollbtn">
-                <div class="price">
-                    <h3 class="priceText">$ 386.0</h3>
-                </div>
-                <div class="rating">
-                    <h4 class="ratingCout">4.9</h4>
-                </div>
-            </div>
-        </div>
+                System.out.println(role);
+                //want to display user Avatar pic name
+                System.out.println(avatar);
+                break;
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Something went wrong: " + e.getMessage());
+        response.sendRedirect("index.jsp"); // Redirect to an error page if necessary
+        return;
+    }
+%><html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="Style/Navstyle.css">
+    <link rel="stylesheet" href="Style/courseCard.css">
 
+    <style>
+        /*!* Parent container for courses *!*/
+        /*.course_container {*/
+        /*    display: flex;*/
+        /*    flex-wrap: wrap; !* Allows cards to wrap on smaller screens *!*/
+        /*    gap: 20px; !* Space between cards *!*/
+        /*    justify-content: center; !* Centers the cards *!*/
+        /*}*/
+        /*!* Course card styling *!*/
+        /*.course_card {*/
+        /*    width: 300px; !* Fixed width for proper alignment *!*/
+        /*    background: white;*/
+        /*    border-radius: 8px;*/
+        /*    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);*/
+        /*    padding: 15px;*/
+        /*}*/
+        /*!* Ensuring images load properly *!*/
+        /*.cardImage img {*/
+        /*    width: 100%;*/
+        /*    height: auto;*/
+        /*    border-radius: 8px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="webHeader">
+        <h2 class="headerTxt"> ./EnrollEdu</h2>
     </div>
+    <div class="searchBar">
+        <input class="navSearch" placeholder="Find your Interest Subjects" name="userWant">
+    </div>
+    <div class="navLink">
+        <ul>
+            <li><a href="home.jsp">Home</a></li>
+            <li><a href="#course">Course</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </div>
+    <div class="instuctorBtn">
+        <% if ("Instructor".equals(role)) { %>
+        <a class="btn" href="createCourse.jsp">Create course</a>
+        <% } %>
+    </div>
+    <div class="profile">
+        <img class="avatar" src="image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="User Avatar" width="40" height="40">
+        <div class="profile-dropdown">
+            <a href="profile.jsp">User Profile</a>
+            <a href="#enrolled">Enrolled Courses</a>
+            <a href="index.jsp">Logout</a>
+        </div>
+    </div>
+</nav>
 
-    <!--Course Card -->
+<%--<!-- Course Container -->--%>
+<%--<div class="course_container">--%>
+<%--    <%--%>
+<%--        String dataFile = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";--%>
+<%--        File file = new File(dataFile);--%>
+<%--        if (file.exists()) {--%>
+<%--            BufferedReader read = new BufferedReader(new FileReader(file));--%>
+<%--            String data;--%>
+<%--            while ((data = read.readLine()) != null) {--%>
+<%--                String[] details = data.split("\t");--%>
+<%--                if (details.length == 8) {--%>
+<%--                    String courseImage = "image/" + details[6]; // Ensure image path is correct--%>
+<%--    %>--%>
+<%--    <div class="allContainer">--%>
+<%--        <div class="image">--%>
+<%--            <img class="courseimg" src="image/<%= details[5] %>" alt="Course Image">--%>
 
-    </body>
+<%--        </div>--%>
+<%--        <div class="textContainer">--%>
+<%--            <h2 class="header"> <%=details[1]%> </h2>--%>
+<%--            <p class="authur"><%=details[3]%></p>--%>
+<%--            <p class="dis"><%=details[2]%></p>--%>
+<%--        </div>--%>
+<%--        <div class="bottonBar">--%>
+<%--            <div class="price">--%>
+<%--                <p class="priceOne"><%=details[4]%></p>--%>
+<%--            </div>--%>
+<%--            <div class="buyBar">--%>
+<%--                <a href="#viewpage" class="enroll">Enroll</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <%--%>
+<%--                }--%>
+<%--            }--%>
+<%--        }--%>
+<%--    %>--%>
+
+<%--</div> <!-- End of course_container -->--%>
+
+
+<div class="allContainer">
+        <img class="courseimg" src="image/courseIMG.png">
+    <div class="textContainer">
+        <h2 class="header">HydroSync Pro Water Bottele</h2>
+        <p class="authur">Dineth Nethmika</p>
+        <p class="dis">Stay on top of your daily watar intake with this innovative battel featuring bulit-in.</p>
+    </div>
+    <div class="bottonBar">
+        <div class="price">
+            <p class="priceOne">$137.0</p>
+        </div>
+        <div class="buyBar">
+            <a href="#viewpage" class="enroll">Enroll</a>
+        </div>
+    </div>
+</div>
+</body>
 </html>
+

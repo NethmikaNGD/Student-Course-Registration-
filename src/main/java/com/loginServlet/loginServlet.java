@@ -68,7 +68,7 @@ public class loginServlet extends HttpServlet {
 
 
             try(FileWriter logwrite = new FileWriter(auditLog ,true)){
-                logwrite.write(dateTime + "\t" + username + "\t" +role + "\n" );
+                logwrite.write(dateTime + "\t"+ "UL" +"\t" + username + "\t" +role + "\n" );
             }catch (IOException e){
                 e.printStackTrace();
             }

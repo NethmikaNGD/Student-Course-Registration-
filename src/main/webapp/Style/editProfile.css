@@ -1,0 +1,27 @@
+.userContac{
+    margin:10px 10px 10px 10px;
+}
+.infor li{
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.infor1 .phoneNo{
+    width: 300px;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: none;
+}
+.userJobType{
+    width: 300px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    border: none;
+    font-weight: bold;
+    opacity: .6;
+}
+.edit-btn{
+    border: none;
+}

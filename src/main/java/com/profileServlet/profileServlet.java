@@ -6,10 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class profileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -20,7 +19,6 @@ public class profileServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
 
         // Retrieve session
         HttpSession session = request.getSession();
@@ -66,5 +64,81 @@ public class profileServlet extends HttpServlet {
         // Forward to profile page
         RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
         dispatcher.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+
+        if (username == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        String extraDataPath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\extraData.txt";
+        String auditLogPath = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateTime = formatter.format(new Date());
+
+        // Get updated profile data
+        String jobTitle = request.getParameter("jobTitle");
+        String phoneNo = request.getParameter("phoneNo");
+        String address = request.getParameter("address");
+        String email = request.getParameter("email");
+        String site = request.getParameter("site");
+        String edu = request.getParameter("edu");
+        String birthday = request.getParameter("bday");
+
+        // Update session attributes to reflect changes immediately
+        session.setAttribute("Email", email);
+        session.setAttribute("Bday", birthday);
+
+        // Read existing data & update the current user's info
+        List<String> fileContent = new ArrayList<>();
+        boolean userExists = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(extraDataPath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split("\t");
+                if (data[0].equals(username)) {
+                    // Update the user's existing data
+                    fileContent.add(username + "\t" + jobTitle + "\t" + phoneNo + "\t" + address + "\t" + email + "\t" + site + "\t" + edu + "\t" + birthday);
+                    userExists = true;
+                } else {
+                    fileContent.add(line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading extraData file: " + e.getMessage());
+        }
+
+        // If user not found in file, append new entry
+        if (!userExists) {
+            fileContent.add(username + "\t" + jobTitle + "\t" + phoneNo + "\t" + address + "\t" + email + "\t" + site + "\t" + edu + "\t" + birthday);
+        }
+
+        // Write the updated content back to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(extraDataPath, false))) {
+            for (String line : fileContent) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing extraData file: " + e.getMessage());
+        }
+
+        // Log the update in audit log
+        try (FileWriter auditlog = new FileWriter(auditLogPath, true)) {
+            auditlog.write(dateTime + "\t" + "updatedProfile" + "\t" + username + "\n");
+        } catch (IOException e) {
+            System.out.println("Error writing audit log: " + e.getMessage());
+        }
+
+        // Redirect to profile page to prevent form resubmission issue
+        response.sendRedirect("profile.jsp");
     }
 }

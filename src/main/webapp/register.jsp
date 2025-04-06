@@ -31,7 +31,7 @@
 
                 <div>
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <input type="text" id="firstName" name="firstName" required  >
                 </div>
 
                 <div>

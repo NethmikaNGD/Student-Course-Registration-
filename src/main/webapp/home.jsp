@@ -101,7 +101,7 @@
     %>
     <div class="allContainer">
         <div class="image">
-            <img class="courseimg" src="<%=courseImage%> alt="Course Image">
+            <img class="courseimg" src="<%=courseImage%>" alt="Course Image">
         </div>
         <div class="textContainer">
             <h2 class="header"> <%=details[1]%> </h2>
@@ -113,7 +113,7 @@
                 <p class="priceOne">$<%=details[4]%></p>
             </div>
             <div class="buyBar">
-                <a href="#viewpage" class="enroll">Enroll</a>
+                <a href="courseProfile.jsp" class="enroll">Enroll</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,127 @@
+*{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Banner {
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+    background-color: aqua;
+    padding: 20px;
+    border-radius: 12px;
+}
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.paidtype{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.paidtype .price{
+    background-color: black;
+    height: 10px 0px;
+    width: 60px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+.Cheader .courseHeader{
+    font-weight: bold;
+    font-size: 35px;
+    margin: 15px 0px 15px 0px;
+}
+.details .Cdes{
+    font-size: 17px;
+    margin: 5px 0px 5px 0px;
+    width:550px;
+}
+
+.rating .rate{
+    font-weight: bold;
+    font-size: 25px;
+    margin: 20px 0px 20px 0px;
+}
+
+.enrollBTN{
+    display: flex;
+    align-items: center;
+
+}
+
+.enrollBTN .Start{
+    background-color:#3A10E5;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    font-size: 18px;
+    margin: 0px 20px 0px 0px;
+
+
+}
+
+.list{
+    margin: 20px;
+}
+.list .includeHeader{
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.list .list{
+    font-size: 18px;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+    background-color: bisque;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 6px;
+
+}
+.topic{
+    font-weight: lighter;
+    font-size: 19px;
+}
+.includeData{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+
+.about{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+}
+
+.about .aboutThis{
+    margin: 0px 20px 0px 20px;
+    padding: 20px;
+}
+.aboutThis .description{
+    width: 80%;
+    margin: 10px;
+    font-size: 18px;
+    font-weight:lighter;
+    opacity: .7;
+}
+.skill .point{
+    margin: 10px;
+    opacity: .7;
+
+}

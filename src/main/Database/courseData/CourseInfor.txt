@@ -1,6 +1,1 @@
-oliver	A2 English for Developers (Beta)	In this English for Developers Curriculum, you'll learn the essentials of English communication.	Mitsuru Lakisha	5000.0	Advance	Screenshot 2025-01-10 180714.png	Literature, Arts
-dineth42	If  you want to learn Python: Follow our Course	every One covered 	Dineth Nethmika	75.0	Beginner	Screenshot 2025-03-09 221154.png	Programming
-dineth42	How to learn self-Study with ChatGPT	every one can use CahtGPt but everyone don't know hove to right do it	Sisuru Lakshan	500.0	Beginner	Screenshot 2025-01-10 174131.png	Programming
-dineth42	Data Analysis , Data Structure and Algorithmize 	Unlimited access to 10,000+ world-class courses, hands-on projects, and job-ready certificate.	Oliver lucas	540.0	Advance	Screenshot 2025-02-25 232525.png	Science, Programming
-dineth42	How to Became a Programmer	in this courser you can follow most usable topics	oliver Lucas	100.0	Beginner	19751d804d0bf3793cd2faad8443ecb8.webp	Science, Programming
-dineth42	Microsoft Python Development Professional Certificate	Launch your career as a Python Developer. Learn in-demand Python skills and become a job-ready	Sithira Lakshan	650.0	Beginner	19751d804d0bf3793cd2faad8443ecb8.webp	Science, Programming
+dineth42	I will teach you how to use ChatGPT 	A wireless mesh network (WMN) is a mesh network created through the connection of wireless access	Dineth Nethmika	95.0	Beginner	networking-wireless_mesh.jpg	Mathematics, Science, Programming

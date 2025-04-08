@@ -72,7 +72,8 @@
                     <label for="role">Role:</label>
                     <select id="role" name="role" required>
                         <option value="Student">Student</option>
-                        <option value="Instructor">Instructor</option>
+                        <%--i change the instructor role for premisions only--%>
+                        <option value="Pending_Instructor">Instructor</option>
                     </select>
                 </div>
 

@@ -1,5 +1,7 @@
 package com.homeServlet;
 
+import com.util.ComCode;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,13 @@ public class homeServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
+
+
+        // Get current timestamp
+        ComCode CommonJavaCodes = new ComCode();
+        String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+
+        System.out.println(CommonJavaCodes.CountFileItem(dataSavePath));
 
 
         // Redirect to the home page

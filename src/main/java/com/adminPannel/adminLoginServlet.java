@@ -1,6 +1,6 @@
 package com.adminPannel;
 
-import com.util.getTime;
+import com.util.ComCode;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,8 +27,8 @@ public class adminLoginServlet extends HttpServlet {
         String password = request.getParameter("AdminPass");
 
         // Get current date/time
-        getTime userGetTime = new getTime();
-        String dateTime = userGetTime.getTime();
+        ComCode userComCode = new ComCode();
+        String dateTime = userComCode.getTime();
 
         String auditLog = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
 

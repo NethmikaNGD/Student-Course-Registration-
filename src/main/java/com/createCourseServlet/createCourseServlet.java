@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.*;
 
-import com.util.getTime;
+import com.util.ComCode;
 
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024, // 1MB
@@ -26,9 +26,13 @@ public class createCourseServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+
+        // Get current timestamp
+        ComCode CommonJavaCodes = new ComCode();
+
         // Generate new course ID by counting existing lines in the course data file
         String filePath = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
-        int courseID = generateCourseID(filePath);
+        int courseID = CommonJavaCodes.generateCourseID(filePath);
 
         try {
             // Get the logged-in username from session
@@ -66,9 +70,8 @@ public class createCourseServlet extends HttpServlet {
             filePart.write(uploadPath);
             System.out.println("Image saved to: " + uploadPath);
 
-            // Get current timestamp
-            getTime thisTime = new getTime();
-            String time = thisTime.getTime();
+
+            String time = CommonJavaCodes.getTime();
 
             // Save course data
             String auditLog = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
@@ -93,16 +96,4 @@ public class createCourseServlet extends HttpServlet {
         }
     }
 
-    // Method to generate a new Course ID based on existing lines in CourseInfor.txt
-    private int generateCourseID(String filePath) {
-        int lines = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            while (reader.readLine() != null) {
-                lines++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return lines + 1;
-    }
 }

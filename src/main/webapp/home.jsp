@@ -21,19 +21,21 @@
 
     String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
 
+    String userID = null;
 
     // Read user information from the file
     try (BufferedReader readData = new BufferedReader(new FileReader(dataSavePath))) {
         String line;
         while ((line = readData.readLine()) != null) {
             String[] data = line.split("\t");
-            if (data.length < 8) continue; // Prevent ArrayIndexOutOfBoundsException
+            if (data.length < 9) continue; // Prevent ArrayIndexOutOfBoundsException
 
-            Uname = data[0]; // Username in the file
+            userID = data[0];
+            Uname = data[1]; // Username in the file
             if (fName.equals(Uname)) {
-                fName = data[1]; // First name
+                fName = data[2]; // First name
 //                role = data[6];  // Role
-                avatar = data[7];// Avatar file name
+                avatar = data[8];// Avatar file name
 
                 System.out.println(role);
                 //want to display user Avatar pic name
@@ -129,6 +131,14 @@
         }
     %>
 
+
+    <script>
+        if ("Pending_Instructor".equals(role)) {
+            alert(`Your Registration Successful!`);
+            alert("This time you can't Publish your Courses");
+            alert("Admin need to Approve your role");
+        }
+    </script>
 </div> <!-- End of course_container -->
 
 

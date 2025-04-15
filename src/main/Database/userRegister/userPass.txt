@@ -1,3 +1,2 @@
-dineth42	dinethnethmika3@gmail.com	0811	Instructor
-oma	oma2006@gmail.com	1234	Student
-ThashariMJ	ThashariMJ@gmail.com	1234	Instructor
+1	dineth42	it24101066@my.sliit.lk	0811	Pending_Instructor
+2	Oma@1	Oma@gmail.com	1234	Student

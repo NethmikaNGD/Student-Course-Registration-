@@ -1,3 +1,2 @@
-dineth42	Mathematics, Programming, History
-oma	Science
-ThashariMJ	Mathematics, Science
+1	dineth42	Mathematics
+2	Oma@1	Programming

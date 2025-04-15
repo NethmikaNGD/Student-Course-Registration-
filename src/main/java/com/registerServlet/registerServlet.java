@@ -1,6 +1,8 @@
 package com.registerServlet;
 
 
+import com.util.ComCode;
+
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,11 +30,16 @@ public class registerServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        // java Util object create
+        ComCode CommonJavaCodes = new ComCode();
+
 
         String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
         String allPassword = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
         String userInterest = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInterest.txt";
         String auditReg = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
+
+        int userID = CommonJavaCodes.generateCourseID(dataSavePath);
 
 
         String firstName = request.getParameter("firstName");
@@ -102,10 +109,10 @@ public class registerServlet extends HttpServlet {
                 FileWriter userInterestTopic = new FileWriter(userInterest, true);
                 FileWriter auditLog = new FileWriter(auditReg,true);
         ) {
-            userInfor.write(username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
-            userPass.write(username + "\t" + email + "\t" + password +"\t" + role + "\n");
-            userInterestTopic.write(username + "\t" + interestsList + "\n");
-            auditLog.write(dateTime + "\t" + "new_user_Register"+ "\t"+ "->"  +"\t" + username + "\t" + role +"\n");
+            userInfor.write( userID +"\t"+ username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
+            userPass.write(userID +"\t"+ username + "\t" + email + "\t" + password +"\t" + role + "\n");
+            userInterestTopic.write(userID +"\t"+ username + "\t" + interestsList + "\n");
+            auditLog.write(dateTime + "\t" + "new_user_Register"+ "\t"+ "->"  +"\t" + userID +"\t"+ username + "\t" + role +"\n");
 
             System.out.println("Register Success ... ");
         } catch (Exception e) {

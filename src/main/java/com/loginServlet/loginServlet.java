@@ -7,10 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.util.jar.JarOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import com.util.getTime;
+
+import com.util.ComCode;
 
 public class loginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -29,6 +27,7 @@ public class loginServlet extends HttpServlet {
 
         boolean loginSuccess = false;
         String role = null;
+        String userID = null;
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -44,13 +43,14 @@ public class loginServlet extends HttpServlet {
                     String[] data = line.split("\t");
                     if (data.length < 4) continue; // Skip invalid lines
 
-                    String storeName = data[0];
-                    String storeEmail = data[1];
-                    String storePassword = data[2];
-                    String storeRole = data[3];
+                    String storeName = data[1];
+                    String storeEmail = data[2];
+                    String storePassword = data[3];
+                    String storeRole = data[4];
 
                     if ((username.equals(storeName) || username.equals(storeEmail)) && password.equals(storePassword)) {
                         loginSuccess = true;
+                        userID = data[0];
                         username = storeName;
                         role = storeRole;
 
@@ -67,23 +67,22 @@ public class loginServlet extends HttpServlet {
         }
 
 
-
-
         if (loginSuccess) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
+            session.setAttribute("userID", userID);
             session.setAttribute("role", role);
 
             //Object creating
-            getTime userGetTime = new getTime();
+            ComCode userComCode = new ComCode();
 
-            String dateTime = userGetTime.getTime();
+            String dateTime = userComCode.getTime();
 
 
 
 
             try(FileWriter logwrite = new FileWriter(auditLog ,true)){
-                logwrite.write(dateTime + "\t"+ "userLogin" + "\t"+ "->" +"\t" + username + "\t" +role + "\n" );
+                logwrite.write(dateTime + "\t"+ "userLogin" + "\t"+ "->" +"\t" + userID + "\t" + username + "\t" +role + "\n" );
             }catch (IOException e){
                 e.printStackTrace();
             }

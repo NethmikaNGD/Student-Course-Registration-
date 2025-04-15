@@ -70,3 +70,8 @@ s2025-04-15 14:38:11	New_Course_Create->0	dineth42	Testing coursre upload
 2025-04-15 15:11:37	Admin_Login ->	EnrollEducationAdminPannel	Admin
 2025-04-15 15:11:54	userLogin ->	WebAdminBoss	admin
 2025-04-15 15:12:03	Admin_Login ->	EnrollEducationAdminPannel	Admin
+2025-04-15 16:32:24	userLogin	->	ThashariMJ	Instructor
+2025-04-15 16:33:15	New_Course_Create	-> 1	ThashariMJ	UX Design Toolkit Professional Certificate
+2025-04-15 16:34:07	userLogin	->	dineth42	Instructor
+2025-04-15 16:35:06	New_Course_Create	-> 2	dineth42	Microsoft AI & ML Engineering Professional Certificate
+2025-04-15 16:37:01	Admin_Login	->	EnrollEducationAdminPannel	Admin

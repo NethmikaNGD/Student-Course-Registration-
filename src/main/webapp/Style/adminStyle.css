@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding:0;
+    font-family: sans-serif;
+}
+.header h2{
+    font-size: 30px;
+    margin:20px 0px 0px 20px;
+}
+
+.actionBar{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2pc;
+}
+.container{
+    background-color: #f1eeee;
+    padding: 10px;
+    width: 140%;
+    border-radius: 12px;
+    text-align: center;
+}
+.number .pNumber{
+    font-size: 40px;
+    padding:0px;
+    font-weight: bold;
+}
+
+/* second Section */
+
+.display{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4pc;
+    padding: 15px;
+}
+.displayInstructors,
+.displayStudents{
+    background-color: rgb(242, 243, 243);
+    border-radius: 12px;
+    margin: 10px;
+    padding:10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #56ad7e;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+.header1 h2{
+    margin: 10px;
+}

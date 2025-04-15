@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.jar.JarOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.util.getTime;
 
 public class loginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -32,43 +33,57 @@ public class loginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        if (username.equals("WebAdminBoss") && password.equals("WebAdminBossPass")) {
+            role = "admin";
+            loginSuccess = true;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(allPassword))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split("\t");
-                if (data.length < 4) continue; // Skip invalid lines
+        }else{
+            try (BufferedReader reader = new BufferedReader(new FileReader(allPassword))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split("\t");
+                    if (data.length < 4) continue; // Skip invalid lines
 
-                String storeName = data[0];
-                String storeEmail = data[1];
-                String storePassword = data[2];
-                String storeRole = data[3];
+                    String storeName = data[0];
+                    String storeEmail = data[1];
+                    String storePassword = data[2];
+                    String storeRole = data[3];
 
-                if ((username.equals(storeName) || username.equals(storeEmail)) && password.equals(storePassword)) {
-                    loginSuccess = true;
-                    role = storeRole;
-                    username = storeName;
-                    break;
+                    if ((username.equals(storeName) || username.equals(storeEmail)) && password.equals(storePassword)) {
+                        loginSuccess = true;
+                        username = storeName;
+                        role = storeRole;
+
+                        break;
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+                request.setAttribute("errorT3", "Error reading user data.");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                return;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("errorT3", "Error reading user data.");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-            return;
+
         }
+
+
+
 
         if (loginSuccess) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
             session.setAttribute("role", role);
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dateTime = formatter.format(new Date());
+            //Object creating
+            getTime userGetTime = new getTime();
+
+            String dateTime = userGetTime.getTime();
+
+
 
 
             try(FileWriter logwrite = new FileWriter(auditLog ,true)){
-                logwrite.write(dateTime + "\t"+ "userLogin ->" +"\t" + username + "\t" +role + "\n" );
+                logwrite.write(dateTime + "\t"+ "userLogin" + "\t"+ "->" +"\t" + username + "\t" +role + "\n" );
             }catch (IOException e){
                 e.printStackTrace();
             }

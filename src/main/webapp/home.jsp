@@ -13,9 +13,9 @@
     }
     // Retrieve session attributes
     String fName = (String) session.getAttribute("username");
+    String role = (String) session.getAttribute("role");
 
     String username = null;
-    String role = null;
     String avatar = null;
     String Uname = null;
 
@@ -32,7 +32,7 @@
             Uname = data[0]; // Username in the file
             if (fName.equals(Uname)) {
                 fName = data[1]; // First name
-                role = data[6];  // Role
+//                role = data[6];  // Role
                 avatar = data[7];// Avatar file name
 
                 System.out.println(role);
@@ -73,6 +73,11 @@
         <% if ("Instructor".equals(role)) { %>
         <a class="btn" href="createCourse.jsp">Create course</a>
         <% } %>
+
+       <% if ("admin".equals(role)){ %>
+        <a class="btn" href="AdminPannel.jsp">Admin Panel</a>
+        <% } %>
+
     </div>
     <div class="profile">
         <img class="avatar" src="image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="User Avatar" width="40" height="40">
@@ -87,6 +92,7 @@
 <!-- Course Container -->
 <div class="displaycourseArea">
     <%
+        // CID +  User +  CT  + CD + FN + PRICE + TYpe = IMG
         String dataFile = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
         File file = new File(dataFile);
         if (file.exists()) {
@@ -94,9 +100,9 @@
             String data;
             while ((data = read.readLine()) != null) {
                 String[] details = data.split("\t");
-                if (details.length == 8) {
+                if (details.length == 9) {
 
-                    String courseImage = "image/" + details[6]; // Ensure image path is correct
+                    String courseImage = "image/" + details[7]; // Ensure image path is correct
                     System.out.println(courseImage);
     %>
     <div class="allContainer">
@@ -104,13 +110,13 @@
             <img class="courseimg" src="<%=courseImage%>" alt="Course Image">
         </div>
         <div class="textContainer">
-            <h2 class="header"> <%=details[1]%> </h2>
-            <p class="authur"><%=details[3]%></p>
-            <p class="dis"><%=details[2]%></p>
+            <h2 class="header"> <%=details[2]%> </h2>
+            <p class="authur"><%=details[4]%></p>
+            <p class="dis"><%=details[3]%></p>
         </div>
         <div class="bottonBar">
             <div class="price">
-                <p class="priceOne">$<%=details[4]%></p>
+                <p class="priceOne">$<%=details[5]%></p>
             </div>
             <div class="buyBar">
                 <a href="courseProfile.jsp" class="enroll">Enroll</a>

@@ -50,6 +50,15 @@
     <url-pattern>/createCourseServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AdminPannelServlet</servlet-name>
+    <servlet-class>com.adminPannel.adminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminPannelServlet</servlet-name>
+    <url-pattern>/adminLoginServlet</url-pattern>
+  </servlet-mapping>
+
   <context-param>
     <description>Location to store uploaded files</description>
     <param-name>file-upload</param-name>

@@ -1,1 +1,4 @@
-dineth42	I will teach you how to use ChatGPT 	A wireless mesh network (WMN) is a mesh network created through the connection of wireless access	Dineth Nethmika	95.0	Beginner	networking-wireless_mesh.jpg	Mathematics, Science, Programming
+0	dineth42	Testing One Two Three	this is my testing upload course's description.	Sisuru Lakshan	40.0	Beginner	Passive-voice-All-tenses.webp	Mathematics
+0	dineth42	Testing type two three	hello this this my second section	Dineth Nethmika	59.0	Advance	R1__15.webp	No interests selected
+0	dineth42	Testing type two three	hello this this my second section	Dineth Nethmika	59.0	Advance	R1__15.webp	No interests selected
+0	dineth42	helooooooooo	helloooooooo this thbis nasdasnas dasdhjasdasdhasdhsd 	tesing name	43.0	Intermediate	20250312_100426.jpg	Programming

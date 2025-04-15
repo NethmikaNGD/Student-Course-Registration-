@@ -12,12 +12,13 @@
     }
     // Retrieve session attributes
     String fName = (String) session.getAttribute("username");
+    String role = (String) session.getAttribute("role");
+
 
     String email = null;
     String bday = null;
     String lname= null;
     String username = null;
-    String role = null;
     String avatar = null;
     String Uname = null;
     String gender = null;
@@ -40,7 +41,7 @@
                 email = data[3];//email
                 bday = data[4];
                 gender = data[5];
-                role = data[6];  // Role
+                // Role already define deta[6]
                 avatar = data[7];// Avatar file name
 
                 System.out.println(role);
@@ -54,6 +55,9 @@
         response.sendRedirect("index.jsp"); // Redirect to an error page if necessary
         return;
     }
+
+
+
 %>
 
 <html>
@@ -88,7 +92,7 @@
     </div>
 
     <div class="profile">
-        <img class="avatar" src="./image/<%= avatar %>" alt="User Avatar" width="40" height="40">
+        <img class="avatar" src="./image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="User Avatar" width="40" height="40">
         <div class="profile-dropdown">
             <a href="profile.jsp">User Profile</a>
             <a href="#enrolled">Enrolled Courses</a>
@@ -104,13 +108,13 @@
     <div class="userInfor" id="viewProfile">
         <div class="userNameLine">
             <div class="userProfile">
-                <img class="userProfilePic" src="image/<%=avatar%>" alt="profile">
+                <img class="userProfilePic" src="image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="profile">
             </div>
 
             <div class="nameContainer">
                 <div class="userName">
                     <p class="userNameTxt"><%=fName%>  <%=lname%></p>
-                    <p class="userTitle">Software Engineer</p>
+                    <p class="userTitle"><%=role%></p>
                 </div>
                 <!-- Edit Button -->
                 <button class="edit-btn" onclick="toggleEdit()">
@@ -147,13 +151,13 @@
     <div class="userInfor" id="editProfile" style="display: none;">
         <div class="userNameLine">
             <div class="userProfile">
-                <img class="userProfilePic" src="image/<%= avatar %>" alt="profile">
+                <img class="userProfilePic" src="image/<%= (avatar != null) ? avatar : "davatar.webp" %>" alt="profile">
             </div>
 
             <div class="nameContainer">
                 <div class="userName">
                     <p class="userNameTxt"><%=fName%>  <%=lname%></p>
-                    <input class="userJobType" type="text" name="jobTitle" placeholder="Job Type">
+                    <p class="userTitle"><%=role%></p>
                 </div>
                 <p class="editIcon">Editing</p>
             </div>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.util.Date;
+import com.util.getTime;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1MB threshold for file processing
         maxFileSize = 1024 * 1024 * 5,  // Max file size 5MB
@@ -20,6 +21,7 @@ public class createCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        int courseID = 0;
 
         try {
             // Retrieve username from session
@@ -58,12 +60,23 @@ public class createCourseServlet extends HttpServlet {
             filePart.write(uploadPath);
             System.out.println("File saved successfully.");
 
+            getTime thisTime = new getTime();
+
+            String time = thisTime.getTime();
+
+
 
             // Save Course Data to File
+            String auditLog = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
             String filePath = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
-            try (FileWriter courseWriter = new FileWriter(filePath, true)) {
-                courseWriter.write(username + "\t" + coursename + "\t" + courseDescription + "\t" +
+            try (
+                    FileWriter courseWriter = new FileWriter(filePath, true);
+                    FileWriter AuditLog = new FileWriter(auditLog, true);
+                    ) {
+                courseWriter.write(courseID + "\t" + username + "\t" + coursename + "\t" + courseDescription + "\t" +
                         instructor + "\t" + price + "\t" + level + "\t" + imageFileName + "\t" + interestsList + "\n");
+
+                AuditLog.write(time + "\t" + "New_Course_Create" + "\t"+ "->"  + courseID + "\t" + username + "\t" + coursename +"\n" );
             }
 
             // Redirect to home page
@@ -75,5 +88,7 @@ public class createCourseServlet extends HttpServlet {
             out.println("<h3 style='color:red;'>Error: " + e.getMessage() + "</h3>");
             e.printStackTrace();
         }
+        courseID++;
+        System.out.println(courseID);
     }
 }

@@ -105,7 +105,7 @@ public class registerServlet extends HttpServlet {
             userInfor.write(username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
             userPass.write(username + "\t" + email + "\t" + password +"\t" + role + "\n");
             userInterestTopic.write(username + "\t" + interestsList + "\n");
-            auditLog.write(dateTime + "\t" + "new user Register ->" +"\t" + username + "\t" + role +"\n");
+            auditLog.write(dateTime + "\t" + "new_user_Register"+ "\t"+ "->"  +"\t" + username + "\t" + role +"\n");
 
             System.out.println("Register Success ... ");
         } catch (Exception e) {

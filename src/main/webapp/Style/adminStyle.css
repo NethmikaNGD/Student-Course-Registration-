@@ -69,3 +69,66 @@ tr:hover {
 .header1 h2{
     margin: 10px;
 }
+.approve-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.reject-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.header1 {
+    margin: 20px;
+}
+table {
+    width: 90%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: center;
+}
+.ban-btn {
+    background-color: #ff3333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reject-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+h2 {
+    text-align: center;
+    margin-top: 40px;
+}

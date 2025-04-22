@@ -14,9 +14,16 @@
     String fName = (String) session.getAttribute("username");
     String role = (String) session.getAttribute("role");
 
-    String username = null;
+    if ("Pending_Instructor".equals(role)){
+        role = "Pending Instructor";
+    }
+
+    String email = null;
+    String lName = null;
     String avatar = null;
     String Uname = null;
+    String brithday = null;
+    String gender = null;
 
     String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
 
@@ -33,7 +40,11 @@
             Uname = data[1]; // Username in the file
             if (fName.equals(Uname)) {
                 fName = data[2]; // First name
-//                role = data[6];  // Role
+                lName = data[3]; // First name
+//                role = data[6];Role
+                email = data[4];
+                brithday = data[5];
+                gender = data[6];
                 avatar = data[8];// Avatar file name
 
                 System.out.println(role);
@@ -102,7 +113,7 @@
 
             <div class="nameContainer">
                 <div class="userName">
-                    <p class="userNameTxt"><%=fName%>  <%=lname%></p>
+                    <p class="userNameTxt"><%=fName%>  <%=lName%></p>
                     <p class="userTitle"><%=role%></p>
                 </div>
                 <!-- Edit Button -->
@@ -129,7 +140,7 @@
                     <li class="txt"><%=email%></li>
                     <li class="txt">Jeremy.WorkSpace.com</li>
                     <li class="txt">SLIIT</li>
-                    <li class="txt"><%=bday%></li>
+                    <li class="txt"><%=brithday%></li>
                     <li class="txt"><%=gender%></li>
                 </div>
             </div>
@@ -145,7 +156,7 @@
 
             <div class="nameContainer">
                 <div class="userName">
-                    <p class="userNameTxt"><%=fName%>  <%=lname%></p>
+                    <p class="userNameTxt"><%=fName%>  <%=lName%></p>
                     <p class="userTitle"><%=role%></p>
                 </div>
                 <p class="editIcon">Editing</p>
@@ -169,7 +180,7 @@
                     <input type="email" name="email" class="phoneNo" placeholder="<%=email%>">
                     <input type="text" name="site" class="phoneNo" placeholder="www.gmail.com">
                     <input type="text" name="edu" class="phoneNo" placeholder="SLIIT">
-                    <input type="date" name="bday" class="phoneNo" value="<%=bday%>">
+                    <input type="date" name="bday" class="phoneNo" value="<%=brithday%>">
                     <p class="phoneNo"><%=gender%></p>
                 </div>
             </div>

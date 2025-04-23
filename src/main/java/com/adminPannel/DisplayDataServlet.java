@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@WebServlet("/DisplayDataServlet")
+@WebServlet("/DisplayDataServlet")
 public class DisplayDataServlet extends HttpServlet {
     private static final String DATA_SAVE_PATH = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
     private static final String COURSE_FILE = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
@@ -70,10 +70,11 @@ public class DisplayDataServlet extends HttpServlet {
         request.setAttribute("instructorList", instructorList);
         request.setAttribute("pendingInstructorList", pendingInstructorList);
 
-        request.getRequestDispatcher("adminpanel.jsp").forward(request, response);
+        request.getRequestDispatcher("AdminPannelPage2.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
+        System.out.println("fuck you");
     }
 }

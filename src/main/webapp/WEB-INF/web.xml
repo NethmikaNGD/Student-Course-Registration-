@@ -59,14 +59,14 @@
     <url-pattern>/adminLoginServlet</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>AdminPannelServlet1</servlet-name>
-    <servlet-class>com.adminPannel.DisplayDataServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminPannelServlet1</servlet-name>
-    <url-pattern>/DisplayDataServlet</url-pattern>
-  </servlet-mapping>
+<!--  <servlet>-->
+<!--    <servlet-name>AdminPannelServlet1</servlet-name>-->
+<!--    <servlet-class>com.adminPannel.DisplayDataServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>AdminPannelServlet1</servlet-name>-->
+<!--    <url-pattern>/DisplayDataServlet</url-pattern>-->
+<!--  </servlet-mapping>-->
 
   <context-param>
     <description>Location to store uploaded files</description>

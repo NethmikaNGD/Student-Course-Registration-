@@ -100,3 +100,5 @@
 2025-04-29 22:48:55	Admin_Login	->	EnrollEducationAdminPannel	Admin
 2025-04-29 23:04:24	new_user_Register	->	11	kali	Student
 2025-04-29 23:04:36	userLogin	->	11	kali	Student
+2025-04-29 23:19:23	new_user_Register	->	12	arrow	Pending_Instructor
+2025-04-29 23:19:43	userLogin	->	12	arrow	Pending_Instructor

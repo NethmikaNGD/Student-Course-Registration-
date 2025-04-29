@@ -76,3 +76,10 @@
 2025-04-20 20:27:01	userLogin	->	null	WebAdminBoss	admin
 2025-04-20 20:28:22	Admin_Login	->	EnrollEducationAdminPannel	Admin
 2025-04-23 12:09:34	userLogin	->	1	dineth42	Pending_Instructor
+2025-04-23 12:29:13	new_user_Register	->	8	dineth42	Student
+2025-04-23 12:30:10	new_user_Register	->	9	oma	Pending_Instructor
+2025-04-23 12:30:24	userLogin	->	1	dineth42	Pending_Instructor
+2025-04-23 12:30:58	userLogin	->	1	dineth42	Pending_Instructor
+2025-04-23 12:31:59	userLogin	->	9	oma	Pending_Instructor
+2025-04-29 19:47:20	userLogin	->	8	dineth42	Student
+2025-04-29 19:47:39	userLogin	->	1	dineth42	Pending_Instructor

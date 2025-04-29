@@ -14,13 +14,13 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10,      // 10MB
         maxRequestSize = 1024 * 1024 * 50   // 50MB
 )
 public class registerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    public String imageFileName = "davatar.webp";
 
     public registerServlet() {
         super();
@@ -89,30 +89,29 @@ public class registerServlet extends HttpServlet {
 
         // Handle file upload
         Part filePart = request.getPart("image");
-        String imageFileName = filePart.getSubmittedFileName();
-        String uploadDirectory = getServletContext().getInitParameter("file-upload");
-        String uploadPath = uploadDirectory + File.separator + imageFileName;
+        System.out.println(filePart.getSubmittedFileName().equals(""));
+        if (!filePart.getSubmittedFileName().equals("")) {
+            String imageFileName = filePart.getSubmittedFileName();
+            String uploadDirectory = getServletContext().getInitParameter("file-upload");
+            String uploadPath = uploadDirectory + File.separator + imageFileName;
 
-        File uploadDir = new File(uploadDirectory);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
+            File uploadDir = new File(uploadDirectory);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+            filePart.write(uploadPath);
+
         }
-        filePart.write(uploadPath);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateTime = formatter.format(new Date());
 
 
-        try (
-                FileWriter userInfor = new FileWriter(dataSavePath, true);
-                FileWriter userPass = new FileWriter(allPassword, true);
-                FileWriter userInterestTopic = new FileWriter(userInterest, true);
-                FileWriter auditLog = new FileWriter(auditReg,true);
-        ) {
-            userInfor.write( userID +"\t"+ username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t"+ imageFileName+ "\n");
-            userPass.write(userID +"\t"+ username + "\t" + email + "\t" + password +"\t" + role + "\n");
-            userInterestTopic.write(userID +"\t"+ username + "\t" + interestsList + "\n");
-            auditLog.write(dateTime + "\t" + "new_user_Register"+ "\t"+ "->"  +"\t" + userID +"\t"+ username + "\t" + role +"\n");
+        try (FileWriter userInfor = new FileWriter(dataSavePath, true); FileWriter userPass = new FileWriter(allPassword, true); FileWriter userInterestTopic = new FileWriter(userInterest, true); FileWriter auditLog = new FileWriter(auditReg, true);) {
+            userInfor.write(userID + "\t" + username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t" + imageFileName + "\n");
+            userPass.write(userID + "\t" + username + "\t" + email + "\t" + password + "\t" + role + "\n");
+            userInterestTopic.write(userID + "\t" + username + "\t" + interestsList + "\n");
+            auditLog.write(dateTime + "\t" + "new_user_Register" + "\t" + "->" + "\t" + userID + "\t" + username + "\t" + role + "\n");
 
             System.out.println("Register Success ... ");
         } catch (Exception e) {

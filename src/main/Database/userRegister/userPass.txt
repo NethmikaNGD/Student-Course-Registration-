@@ -5,3 +5,5 @@
 5	Suddi	Suddi@gmail.com	12345	Student
 6	markallen	markallen@gmail.com	mark	Pending_Instructor
 7	Flash	FlashisFast@gg.com	hello	Pending_Instructor
+8	dineth42	dinethnethmika3@gmail.com	123	Student
+9	oma	it24101066@my.sliit.lk	1234	Pending_Instructor

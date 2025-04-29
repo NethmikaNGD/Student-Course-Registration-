@@ -5,3 +5,5 @@
 5	Suddi	Suddi 	Gani	Suddi@gmail.com	2025-04-11	Female	Student	OIG3.eA_D.webp
 6	markallen	Mark	Super	markallen@gmail.com	2025-04-03	Male	Pending_Instructor	faded_gallery-7stSlxNAmfc-unsplash.jpg
 7	Flash	Barry	Allen	FlashisFast@gg.com	2025-04-02	Male	Pending_Instructor	It24101066slip.jpg
+8	dineth42	Dineth	Nethmika	dinethnethmika3@gmail.com	2025-04-24	Male	Student	davatar.webp
+9	oma	Dineth	Nethmika	it24101066@my.sliit.lk	2025-04-16	Male	Pending_Instructor	davatar.webp

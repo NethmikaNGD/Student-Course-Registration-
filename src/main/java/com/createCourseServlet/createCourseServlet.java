@@ -32,6 +32,7 @@ public class createCourseServlet extends HttpServlet {
 
         // Generate new course ID by counting existing lines in the course data file
         String filePath = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
+        String anotherFilePath = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor1.txt";
         int courseID = CommonJavaCodes.generateCourseID(filePath);
 
         try {
@@ -48,10 +49,16 @@ public class createCourseServlet extends HttpServlet {
 
             // Collect form data
             String coursename = request.getParameter("title");
-            String courseDescription = request.getParameter("description");
+            String courseDescription = request.getParameter("description1");
             String instructor = request.getParameter("instructor");
             String priceStr = request.getParameter("price");
             double price = (priceStr != null && !priceStr.isEmpty()) ? Double.parseDouble(priceStr) : 0.0;
+            int duration = Integer.parseInt(request.getParameter("duration"));
+            int projectCont = Integer.parseInt(request.getParameter("projectCount"));
+            String courseIncuding1 = request.getParameter("courseIncluding1");
+            String courseIncuding2 = request.getParameter("courseIncluding2");
+            String courseIncuding3 = request.getParameter("courseIncluding3");
+            String dis = request.getParameter("description");
             String level = request.getParameter("level");
             String[] interests = request.getParameterValues("interests");
             String interestsList = (interests != null) ? String.join(", ", interests) : "No interests selected";
@@ -77,11 +84,12 @@ public class createCourseServlet extends HttpServlet {
             String auditLog = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
             try (
                     FileWriter courseWriter = new FileWriter(filePath, true);
+                    FileWriter courseWriter1 = new FileWriter(anotherFilePath, true);
                     FileWriter auditWriter = new FileWriter(auditLog, true);
             ) {
                 courseWriter.write(courseID + "\t" + username + "\t" + coursename + "\t" + courseDescription + "\t" +
-                        instructor + "\t" + price + "\t" + level + "\t" + imageFileName + "\t" + interestsList + "\n");
-
+                        instructor + "\t" + price + "\t" +level + "\t" + imageFileName + "\t" + interestsList + "\n");
+                courseWriter1.write(courseID + "\t" + duration + "\t" + projectCont + "\t" + courseIncuding1 + "\t" + courseIncuding2 + "\t" +courseIncuding3 + "\t" + dis +"\n" );
                 auditWriter.write(time + "\t" + "New_Course_Create" + "\t-> " + courseID + "\t" + username + "\t" + coursename + "\n");
             }
 

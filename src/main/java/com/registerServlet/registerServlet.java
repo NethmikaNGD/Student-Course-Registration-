@@ -1,6 +1,5 @@
 package com.registerServlet;
 
-
 import com.util.ComCode;
 
 import javax.servlet.annotation.MultipartConfig;
@@ -20,7 +19,7 @@ import java.util.Date;
 )
 public class registerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public String imageFileName = "davatar.webp";
+    public String imageFileName = "davatar.webp"; // Default avatar
 
     public registerServlet() {
         super();
@@ -30,9 +29,7 @@ public class registerServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        // java Util object create
         ComCode CommonJavaCodes = new ComCode();
-
 
         String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
         String allPassword = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
@@ -40,7 +37,6 @@ public class registerServlet extends HttpServlet {
         String auditReg = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
 
         int userID = CommonJavaCodes.generateCourseID(dataSavePath);
-
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -52,10 +48,11 @@ public class registerServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String role = request.getParameter("role");
 
-        // Handling multiple selection interests
+        // Interests
         String[] interests = request.getParameterValues("interests");
         String interestsList = (interests != null) ? String.join(", ", interests) : "No interests selected";
 
+        // Password confirmation
         if (!password.equals(confirmPassword)) {
             request.setAttribute("errorT1", "Passwords do not match");
             RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
@@ -63,35 +60,33 @@ public class registerServlet extends HttpServlet {
             return;
         }
 
-        // Check for duplicate username and email
-        boolean registerSuccess = false;
-
+        // Check for duplicates
         try (BufferedReader checkPass = new BufferedReader(new FileReader(allPassword))) {
             String line;
             while ((line = checkPass.readLine()) != null) {
                 String[] parts = line.split("\t");
-                String userN = parts[0];
-                String userE = parts[1];
+                if (parts.length >= 3) {
+                    String userN = parts[1];
+                    String userE = parts[2];
 
-                if (username.equals(userN) && email.equals(userE)) {
-                    request.setAttribute("errorT2", "Username and email are already taken!");
-                    RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
-                    rd.forward(request, response);
-                    return;
+                    if (username.equals(userN) || email.equals(userE)) {
+                        request.setAttribute("errorT2", "Username and email are already taken!");
+                        RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+                        rd.forward(request, response);
+                        return;
+                    }
                 }
             }
-            registerSuccess = true;
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        // Handle file upload
+        // Handle image upload
         Part filePart = request.getPart("image");
-        System.out.println(filePart.getSubmittedFileName().equals(""));
-        if (!filePart.getSubmittedFileName().equals("")) {
-            String imageFileName = filePart.getSubmittedFileName();
+
+        if (filePart != null && filePart.getSize() > 0 && !filePart.getSubmittedFileName().equals("")) {
+            imageFileName = filePart.getSubmittedFileName();  // <-- Fix: update global variable
+
             String uploadDirectory = getServletContext().getInitParameter("file-upload");
             String uploadPath = uploadDirectory + File.separator + imageFileName;
 
@@ -99,15 +94,20 @@ public class registerServlet extends HttpServlet {
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
             }
-            filePart.write(uploadPath);
 
+            filePart.write(uploadPath);
         }
 
+        // Save records
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateTime = formatter.format(new Date());
 
-
-        try (FileWriter userInfor = new FileWriter(dataSavePath, true); FileWriter userPass = new FileWriter(allPassword, true); FileWriter userInterestTopic = new FileWriter(userInterest, true); FileWriter auditLog = new FileWriter(auditReg, true);) {
+        try (
+                FileWriter userInfor = new FileWriter(dataSavePath, true);
+                FileWriter userPass = new FileWriter(allPassword, true);
+                FileWriter userInterestTopic = new FileWriter(userInterest, true);
+                FileWriter auditLog = new FileWriter(auditReg, true);
+        ) {
             userInfor.write(userID + "\t" + username + "\t" + firstName + "\t" + lastName + "\t" + email + "\t" + dateOfBirth + "\t" + gender + "\t" + role + "\t" + imageFileName + "\n");
             userPass.write(userID + "\t" + username + "\t" + email + "\t" + password + "\t" + role + "\n");
             userInterestTopic.write(userID + "\t" + username + "\t" + interestsList + "\n");

@@ -1,9 +1,11 @@
 1	dineth42	it24101066@my.sliit.lk	0811	Pending_Instructor
-2	Oma@1	Oma@gmail.com	1234	Student
+2	Omxa@1	Oma@gmail.com	1234	Student
 3	Laka	Laka2004@gmail.com	1234	Pending_Instructor
 4	WebAdminBoss	HarryLoveHermione199@hogwarts.com	GG	Student
 5	Suddi	Suddi@gmail.com	12345	Student
 6	markallen	markallen@gmail.com	mark	Pending_Instructor
 7	Flash	FlashisFast@gg.com	hello	Pending_Instructor
-8	dineth42	dinethnethmika3@gmail.com	123	Student
-9	oma	it24101066@my.sliit.lk	1234	Pending_Instructor
+
+9	oma	it24101066@my.sliit.lk	1234	Instructor
+10	dineth42	HarryLoveHermione199@hogwarts.com	123	Student
+11	kali	kaliRoses@OnlyFans.com	gg	Student

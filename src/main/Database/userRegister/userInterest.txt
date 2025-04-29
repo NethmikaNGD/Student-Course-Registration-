@@ -7,3 +7,5 @@
 7	Flash	Programming
 8	dineth42	Mathematics
 9	oma	Science
+10	dineth42	Science
+11	kali	Programming

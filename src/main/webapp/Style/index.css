@@ -1,0 +1,88 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.section2{
+    padding: 20px;
+}
+
+.section2 .loginForm{
+    background-color: white;
+    padding:30px;
+
+    width: 30%;
+    border-radius: 12px;
+    box-shadow: 6px 5px 70px rgba(130, 130, 130, 0.5);
+    position: absolute;
+    top: 25%;
+    right:8%;
+
+
+
+}
+.formheader{
+    font-size: 50px;
+    margin: 10px;
+
+}
+.inputLable{
+    /* border: none; */
+    font-size: 20px;
+    margin: 10px;
+    width: 90%;
+    padding: 5px;
+    border-radius: 6px;
+}
+.loginBtn{
+    color: white;
+    background-color: rgb(84, 185, 85);
+    border: none;
+    padding: 10px;
+    font-size: large;
+    width: 93%;
+    margin: 10px 10px 0px 10px;
+    border-radius: 6px;
+}
+
+.loginBtn:hover{
+    background-color: #3f803f;
+}
+
+.forgottLink{
+    text-decoration: none;
+
+
+}
+.containerForget{
+    padding: 10px;
+}
+
+
+
+
+
+
+.section1{
+}
+
+.header{
+    position: absolute;
+    top: 20%;
+    left: 7%;
+}
+.header .webgreat{
+    font-size: 24px;
+}
+.webHeader{
+    font-size: 6pc;
+}
+.PrintError{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}

@@ -98,9 +98,10 @@
         <label>Course Title:</label>
         <input type="text" name="title" class="form-control" required>
 
-        <label>Course Description:</label>
-        <textarea name="description" class="form-control des" id="description" maxlength="100" rows="3" required></textarea>
+        <label>Course mini Description:</label>
+        <textarea name="description1" class="form-control des" id="description" maxlength="100" rows="3" required></textarea>
         <p id="charCount">0/100 characters used</p>
+
 
         <script>
             const descriptionInput = document.getElementById("description");
@@ -108,7 +109,7 @@
 
             descriptionInput.addEventListener("input", function () {
                 const currentLength = this.value.length;
-                charCount.textContent = `${currentLength}/150 characters used`;
+                charCount.textContent = `${currentLength}/100 characters used`;
 
                 // Optional: Prevent user from entering more text when limit is reached
                 if (currentLength >= 100) {
@@ -126,6 +127,22 @@
 
         <label>Price: $</label>
         <input type="text" name="price" class="form-control" required>
+
+        <label>Duration:</label>
+        <input type="number" name="duration" class="form-control" required>
+
+        <label>Project count:</label>
+        <input type="number" name="projectCount" class="form-control" required>
+
+        <label>Courses Including:</label>
+        <input type="text" name="courseIncluding1" class="form-control" required>
+        <label></label>
+        <input type="text" name="courseIncluding2" class="form-control" required>
+        <label></label>
+        <input type="text" name="courseIncluding3" class="form-control" required>
+
+        <label>Course Description:</label>
+        <textarea name="description" class="form-control des" class="description1" rows="3" required></textarea>
 
         <label>Level:</label>
         <select name="level" required>

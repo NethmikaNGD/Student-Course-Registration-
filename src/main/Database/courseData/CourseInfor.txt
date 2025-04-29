@@ -1,2 +1,1 @@
-1	ThashariMJ	UX Design Toolkit Professional Certificate	Design Powerful User Experiences. Learn Figma, Sketch, and Miro to create, analyze, and ethically.	Thushari Manjula	20.0	Beginner	OIG3.eA_D.webp	Arts
-2	dineth42	Microsoft AI & ML Engineering Professional Certificate	Prepare for a Career in AI & ML Engineering. Build, deploy, and innovate with advanced techniques	Dineth Nethmika	100.0	Advance	aiml_cert_working_400x300.webp	Science, Programming
+1	oma	Cyber Security Course for Beginners - Level 01	Learn the Security Fundamentals required for your everyday online presence.	Omasha Gayandi	45.0	Beginner	course-1041-What-is-Cyber-Security.jpg	Science, Programming

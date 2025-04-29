@@ -132,13 +132,6 @@
     %>
 
 
-    <script>
-        if ("Pending_Instructor".equals(role)) {
-            alert(`Your Registration Successful!`);
-            alert("This time you can't Publish your Courses");
-            alert("Admin need to Approve your role");
-        }
-    </script>
 </div> <!-- End of course_container -->
 
 

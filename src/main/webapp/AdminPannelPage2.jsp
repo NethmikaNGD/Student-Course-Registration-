@@ -207,12 +207,12 @@
                     <td><i>Not Provided</i></td>
                     <td><%=details[5]%></td>
                     <td>
-                        <form method="post" action="approveInstructor.jsp" style="display:inline;">
-                            <input type="hidden" name="id" value="<%=details[0]%>">
+                        <form method="post" action="ApproveInstructorServlet" style="display:inline;">
+                            <input type="hidden" name="id"  value="${user[0]}">
                             <input type="hidden" name="fullData" value="<%=String.join("\t", details)%>">
                             <button type="submit" class="approve-btn">Approve</button>
                         </form>
-                        <form method="post" action="rejectInstructor.jsp" style="display:inline;">
+                        <form method="post" action="ApproveInstructorServlet" style="display:inline;">
                             <input type="hidden" name="id" value="<%=details[0]%>">
                             <button type="submit" class="reject-btn">Reject</button>
                         </form>

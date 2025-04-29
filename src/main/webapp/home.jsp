@@ -53,6 +53,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="Style/Navstyle.css">
     <link rel="stylesheet" href="Style/courseCard.css">
+    <link rel="stylesheet" href="Style/home.css">
 
 </head>
 <body>
@@ -90,6 +91,14 @@
         </div>
     </div>
 </nav>
+
+<div class="alert">
+    <% if ("Pending_Instructor".equals(role)) { %>
+    <div class="instructorMSG">
+        <p class="msg">Welcome! You are currently a Pending Instructor. At this time, you are not permitted to publish courses. Please wait for the administrator to grant you the necessary permissions.</p>
+    </div>
+    <% } %>
+</div>
 
 <!-- Course Container -->
 <div class="displaycourseArea">

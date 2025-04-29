@@ -4,12 +4,13 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @WebServlet("/DisplayDataServlet")
 public class DisplayDataServlet extends HttpServlet {
-    private static final String DATA_SAVE_PATH = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+
+    private static final String USER_INFO_FILE = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+    private static final String USER_PASS_FILE = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
     private static final String COURSE_FILE = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,46 +23,87 @@ public class DisplayDataServlet extends HttpServlet {
         List<String[]> instructorList = new ArrayList<>();
         List<String[]> pendingInstructorList = new ArrayList<>();
 
-        File userFile = new File(DATA_SAVE_PATH);
-        if (userFile.exists() && userFile.canRead()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(userFile))) {
+        // Step 1: Load roles from userPass.txt into a map
+        Map<String, String> userRoles = new HashMap<>();
+        File passFile = new File(USER_PASS_FILE);
+
+        if (passFile.exists() && passFile.canRead()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(passFile))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    String[] details = line.split("\\t");
-                    if (details.length >= 9) {
-                        String role = details[7].trim().toLowerCase();
+                    String[] parts = line.split("\\t");
+                    if (parts.length >= 3) {
+                        String username = parts[0].trim();
+                        String role = parts[2].trim().toLowerCase().replace("_", "");
+                        userRoles.put(username, role);
+
+                        // Count and collect
                         switch (role) {
                             case "student":
                                 studentCount++;
-                                studentList.add(details);
+                                studentList.add(parts);
                                 break;
                             case "instructor":
                                 instructorCount++;
-                                instructorList.add(details);
+                                instructorList.add(parts);
                                 break;
                             case "pendinginstructor":
                                 pendingInstructorCount++;
-                                pendingInstructorList.add(details);
+                                pendingInstructorList.add(parts);
                                 break;
                         }
                     }
                 }
-            } catch (IOException e) {
-                System.err.println("Error reading user file: " + e.getMessage());
             }
         }
 
-        File courseData = new File(COURSE_FILE);
-        if (courseData.exists() && courseData.canRead()) {
-            try (BufferedReader courseReader = new BufferedReader(new FileReader(courseData))) {
+        // Step 2: Update roles in userInfor.txt
+        File infoFile = new File(USER_INFO_FILE);
+        File tempFile = new File("D:\\Project\\LMS\\src\\main\\Database\\userRegister\\tempInfor.txt");
+
+        if (infoFile.exists() && infoFile.canRead()) {
+            try (
+                    BufferedReader reader = new BufferedReader(new FileReader(infoFile));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+            ) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split("\\t");
+
+                    if (parts.length >= 9) {
+                        String username = parts[0].trim();
+                        String updatedRole = userRoles.get(username);
+
+                        if (updatedRole != null) {
+                            parts[7] = updatedRole;  // Update role field (index 7)
+                        }
+
+                        writer.write(String.join("\t", parts));
+                        writer.newLine();
+                    } else {
+                        writer.write(line);
+                        writer.newLine();
+                    }
+                }
+            }
+
+            // Replace original file with updated
+            if (infoFile.delete()) {
+                tempFile.renameTo(infoFile);
+            }
+        }
+
+        // Step 3: Count courses
+        File courseFile = new File(COURSE_FILE);
+        if (courseFile.exists() && courseFile.canRead()) {
+            try (BufferedReader courseReader = new BufferedReader(new FileReader(courseFile))) {
                 while (courseReader.readLine() != null) {
                     courseCount++;
                 }
-            } catch (IOException e) {
-                System.err.println("Error reading course file: " + e.getMessage());
             }
         }
 
+        // Step 4: Send to JSP
         request.setAttribute("studentCount", studentCount);
         request.setAttribute("instructorCount", instructorCount);
         request.setAttribute("pendingInstructorCount", pendingInstructorCount);
@@ -75,6 +117,5 @@ public class DisplayDataServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
-        System.out.println("fuck you");
     }
 }

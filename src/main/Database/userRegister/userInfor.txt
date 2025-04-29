@@ -1,11 +1,13 @@
-1	dineth42	Dineth	Nethmika	it24101066@my.sliit.lk	2018-06-06	Male	Pending_Instructor	OIG3.eA_D.webp
+1	dineth42	Dineth	Nethmika	it24101066@my.sliit.lk	2018-06-06	Male	Instructor	OIG3.eA_D.webp
 2	Oma@1	Omash	Gayandi	Oma@gmail.com	2025-04-05	Female	Student	close-up-salad-leaves-with-salt-table_23-2148538681.jpg
 3	Laka	Lakshan	Sithira	Laka2004@gmail.com	2025-04-04	Male	Instructor	19751d804d0bf3793cd2faad8443ecb8.webp
 
 5	Suddi	Suddi 	Gani	Suddi@gmail.com	2025-04-11	Female	Student	OIG3.eA_D.webp
-6	markallen	Mark	Super	markallen@gmail.com	2025-04-03	Male	Pending_Instructor	faded_gallery-7stSlxNAmfc-unsplash.jpg
-7	Flash	Barry	Allen	FlashisFast@gg.com	2025-04-02	Male	Pending_Instructor	It24101066slip.jpg
+6	markallen	Mark	Super	markallen@gmail.com	2025-04-03	Male	Instructor	faded_gallery-7stSlxNAmfc-unsplash.jpg
+7	Flash	Barry	Allen	FlashisFast@gg.com	2025-04-02	Male	Instructor	It24101066slip.jpg
 
 9	oma	Dineth	Nethmika	it24101066@my.sliit.lk	2025-04-16	Male	Instructor	davatar.webp
 10	dineth42	Shan	Manamperi	HarryLoveHermione199@hogwarts.com	2025-04-19	Female	Student	davatar.webp
 11	kali	Kali	Roses	kaliRoses@OnlyFans.com	2025-04-04	Female	Student	davatar.webp
+12	arrow	oliver	queue	arrowflash@hero.club	2025-04-04	Other	Instructor	Passive-voice-All-tenses.webp
+13	sakuRep	saku	perera	sakuRep@sliit.lk	2025-04-03	Female	Pending_Instructor	digital-marketer-human.webp

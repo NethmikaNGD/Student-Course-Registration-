@@ -9,3 +9,5 @@
 9	oma	Science
 10	dineth42	Science
 11	kali	Programming
+12	arrow	Science
+13	sakuRep	Science

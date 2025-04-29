@@ -1,1 +1,2 @@
 1	oma	Cyber Security Course for Beginners - Level 01	Learn the Security Fundamentals required for your everyday online presence.	Omasha Gayandi	45.0	Beginner	course-1041-What-is-Cyber-Security.jpg	Science, Programming
+2	oma	Digital Marketer Career Accelerator	Your career in digital marketing starts here. Fast-track learning and interview prep. Grow skills	Omasha Gayandi	30.65	Beginner	hello.png	History, Arts

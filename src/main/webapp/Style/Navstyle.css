@@ -7,7 +7,11 @@
 }
 
 /* Navigation Bar Styling */
+
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,15 +102,14 @@ nav {
 
 /* Dropdown Menu */
 .profile-dropdown {
-    display: none;
     position: absolute;
+    top: 50px; /* Adjust based on avatar height */
     right: 0;
+    z-index: 1000; /* higher than alert bar */
     background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-    min-width: 150px;
-    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
 }
 
 .profile-dropdown a {

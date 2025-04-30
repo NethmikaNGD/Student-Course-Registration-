@@ -8,6 +8,7 @@
 
 9	oma	it24101066@my.sliit.lk	1234	Instructor
 10	dineth42	HarryLoveHermione199@hogwarts.com	123	Student
-11	kali	kaliRoses@OnlyFans.com	gg	Student
+11	kali	kaliRoses@OnlyFans.com	gg	StudentS
 12	arrow	arrowflash@hero.club	flashass	Instructor
-13	sakuRep	sakuRep@sliit.lk	saku	Pending_Instructor
+13	sakuRep	sakuRep@sliit.lk	saku	Pending_InstructorS
+12	arrow	arrowflash@hero.club	flashass	Pending_Instructor

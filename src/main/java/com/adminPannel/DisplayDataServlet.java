@@ -112,7 +112,8 @@ public class DisplayDataServlet extends HttpServlet {
         request.setAttribute("instructorList", instructorList);
         request.setAttribute("pendingInstructorList", pendingInstructorList);
 
-        request.getRequestDispatcher("AdminPannelPage2.jsp").forward(request, response);
+
+        System.out.println("hellow");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

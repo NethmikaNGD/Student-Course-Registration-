@@ -12,3 +12,5 @@
 12	arrow	arrowflash@hero.club	flashass	Instructor
 13	sakuRep	sakuRep@sliit.lk	saku	Pending_InstructorS
 12	arrow	arrowflash@hero.club	flashass	Pending_Instructor
+15	yehenseniru	yehens.desilva@gmail.com	1234	Student
+16	gayan1	gayan@gmail.com	1234	Pending_Instructor

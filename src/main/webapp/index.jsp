@@ -42,7 +42,7 @@
             <button type="submit" class="loginBtn"  >Login</button>
 
             <div class="containerForget">
-                <a class="forgottLink" href="#forgetpass" title="Click Change your Password">Forgot Password?</a>
+                <a class="forgottLink" href="forgotpass.jsp" title="Click Change your Password">Forgot Password?</a>
             </div>
 
             <div class="containerForget ">

@@ -32,6 +32,13 @@ public class loginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        if (username.equals("EnrollEducationAdminPannel") && password.equals("08110607Dineth")) {
+
+            RequestDispatcher rd = request.getRequestDispatcher("AdminPannelPage2.jsp"); // or "AdminPannelPage2"
+            rd.forward(request, response);
+
+        }
+
         if (username.equals("WebAdminBoss") && password.equals("WebAdminBossPass")) {
             role = "admin";
             loginSuccess = true;

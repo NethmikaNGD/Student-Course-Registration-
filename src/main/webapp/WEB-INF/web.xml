@@ -60,6 +60,17 @@
   </servlet-mapping>
 
 <!--  <servlet>-->
+<!--    <servlet-name>CourseProfileServlet</servlet-name>-->
+<!--    <servlet-class>com.courseProfile.CourseProfileServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>CourseProfileServlet</servlet-name>-->
+<!--    <url-pattern>/courseProfile</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+
+
+  <!--  <servlet>-->
 <!--    <servlet-name>AdminPannelServlet1</servlet-name>-->
 <!--    <servlet-class>com.adminPannel.DisplayDataServlet</servlet-class>-->
 <!--  </servlet>-->

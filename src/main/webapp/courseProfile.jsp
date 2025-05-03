@@ -1,68 +1,91 @@
-<%@ page import="java.io.BufferedReader" %>
-<%@ page import="java.io.FileReader" %>
-<%@ page import="java.io.IOException" %><%--
-  Created by IntelliJ IDEA.
-  User: Dinet
-  Date: 4/6/2025
-  Time: 11:41 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.io.*" %>
 <%
-    // Redirect to login if the session is invalid
+    String courseId = request.getParameter("courseId");
+
     if (session == null || session.getAttribute("username") == null) {
         response.sendRedirect("index.jsp");
         return;
     }
-    // Retrieve session attributes
+
     String fName = (String) session.getAttribute("username");
     String role = (String) session.getAttribute("role");
 
-    String username = null;
     String avatar = null;
     String Uname = null;
-
-    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
-
     String userID = null;
 
-    // Read user information from the file
+    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
+    String[] filePaths = {
+            "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt",
+            "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor1.txt"
+    };
+
+    // Load user info
     try (BufferedReader readData = new BufferedReader(new FileReader(dataSavePath))) {
         String line;
         while ((line = readData.readLine()) != null) {
             String[] data = line.split("\t");
-            if (data.length < 9) continue; // Prevent ArrayIndexOutOfBoundsException
+            if (data.length < 9) continue;
 
             userID = data[0];
-            Uname = data[1]; // Username in the file
+            Uname = data[1];
             if (fName.equals(Uname)) {
-                fName = data[2]; // First name
-//                role = data[6];  // Role
-                avatar = data[8];// Avatar file name
-
-                System.out.println(role);
-                //want to display user Avatar pic name
-                System.out.println(avatar);
+                fName = data[2];
+                avatar = data[8];
                 break;
             }
         }
     } catch (IOException e) {
-        System.out.println("Something went wrong: " + e.getMessage());
-        response.sendRedirect("index.jsp"); // Redirect to an error page if necessary
+        System.out.println("User info read error: " + e.getMessage());
+        response.sendRedirect("index.jsp");
+        return;
+    }
+
+    String[] course = null;
+    String courseType = "Free";
+
+    for (String path : filePaths) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                course = line.split("\t");
+                if (course.length < 7) continue;
+
+                if (course[0].equals(courseId)) {
+                    try {
+                        double price = Double.parseDouble(course[5]);
+                        courseType = (price == 0.0) ? "Free" : "Paid";
+                    } catch (NumberFormatException e) {
+                        courseType = "Free"; // fallback
+                    }
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("File read error: " + e.getMessage());
+        }
+
+        if (course != null && course[0].equals(courseId)) break;
+    }
+
+    if (course == null) {
+        out.println("<h2>Course not found</h2>");
         return;
     }
 %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Course Profile</title>
     <link rel="stylesheet" href="Style/Navstyle.css">
     <link rel="stylesheet" href="Style/courseProfilestyle.css">
 </head>
 <body>
-<!---nav -->
+<!-- Nav -->
 <nav>
     <div class="webHeader">
-        <h2 class="headerTxt"> ./EnrollEdu</h2>
+        <h2 class="headerTxt"> <a href="home.jsp">./EnrollEdu</a></h2>
     </div>
     <div class="searchBar">
         <input class="navSearch" placeholder="Find your Interest Subjects" name="userWant">
@@ -89,42 +112,38 @@
     </div>
 </nav>
 
-<!---nav -->
-    <section class="coursePage">
+<!-- Course Info -->
+<section class="coursePage">
     <section class="Banner">
         <section class="header">
             <div class="details">
-
                 <div class="paidtype">
-                    <p class="price">Free</p>
+                    <p class="price"><%=courseType%></p>
                     <p class="courseType">Course</p>
                 </div>
 
                 <div class="Cheader">
-                    <p class="courseHeader">Learning Rasberry PI</p>
+                    <p class="courseHeader"><%=course[2]%></p>
                 </div>
 
-                <div class="Cdes">
-                    Learn the basics of Rasberry PI, the world-famous credit card size computer, and linux operating system.
-                </div>
+                <div class="Cdes"><%=course[3]%></div>
+                <div class="Cdes"><%=course[4]%></div>
 
                 <div class="rating">
-                    <p class="rate">4.3</p>
+                    <p class="rate">$ <%=course[5]%></p>
                 </div>
 
                 <div class="enrollBTN">
                     <button class="Start">Start</button>
                     <p class="countEnrolled">11,550 learners enrolled</p>
                 </div>
-
             </div>
             <div class="includes">
                 <div class="list">
                     <p class="includeHeader">This Course includes</p>
-                    <p class="list">Al assistance for guided coding help</p>
+                    <p class="list">AI assistance for guided coding help</p>
                     <p class="list">Project to apply new skills</p>
-                    <p class="list">A cetificate of completion</p>
-
+                    <p class="list">A certificate of completion</p>
                 </div>
             </div>
         </section>
@@ -133,10 +152,10 @@
     <section class="main">
         <div class="level">
             <p class="topic">Skill Level</p>
-            <p class="includeData">Beginner</p>
+            <p class="includeData"><%=course[6]%></p>
         </div>
         <div class="time">
-            <p class="topic">Timme to Complete</p>
+            <p class="topic">Time to Complete</p>
             <p class="includeData">2 hours</p>
         </div>
         <div class="project">
@@ -152,18 +171,16 @@
     <section class="about">
         <div class="aboutThis">
             <h2 class="topic2">About this course</h2>
-            <p class="description">Build on your JavaScript foundation with Intermediate JavaScript. This course dives into advanced concepts like classes, promises, async/await, and requests. You’ll learn how to create more dynamic and efficient web applications while mastering essential techniques for structuring and optimizing large-scale projects.</p>
+            <p class="description">Build on your JavaScript foundation with Intermediate JavaScript. This course dives into advanced concepts like classes, promises, async/await, and requests.</p>
         </div>
         <div class="skill">
-            <h2 class="topic2">Skill you'll gain</h2>
+            <h2 class="topic2">Skills you'll gain</h2>
             <li class="point">Understanding currying, hoisting, and concurrency</li>
             <li class="point">Structuring web apps with classes and modules</li>
-            <li class="point">Using promises and async/await for asynchronous programming</li>
-            <li class="point">Using promises and async/await for asynchronous programming</li>
+            <li class="point">Using promises and async/await for async programming</li>
         </div>
     </section>
 </section>
-
 
 </body>
 </html>

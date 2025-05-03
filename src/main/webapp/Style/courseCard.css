@@ -85,3 +85,11 @@
 .buyBar:hover{
     background-color: #146179;
 }
+.enroll-btn{
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+
+
+}

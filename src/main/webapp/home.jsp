@@ -78,6 +78,7 @@
         <% } %>
 
        <% if ("admin".equals(role)){ %>
+        <a class="btn" href="createCourse.jsp">Create course</a>
         <a class="btn" href="AdminPannel.jsp">Admin Panel</a>
         <% } %>
 
@@ -129,9 +130,11 @@
             <div class="price">
                 <p class="priceOne">$<%=details[5]%></p>
             </div>
-            <div class="buyBar">
-                <a href="courseProfile.jsp" class="enroll">Enroll</a>
-            </div>
+            <form action="courseProfile.jsp" method="get">
+                <input type="hidden" name="courseId" value="<%=details[0]%>" />
+                <button type="submit" class="enroll-btn">View Course</button>
+            </form>
+
         </div>
     </div>
     <%

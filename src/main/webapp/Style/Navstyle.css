@@ -4,10 +4,15 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+
+}
+
+/* Body padding to prevent overlap with fixed nav */
+body {
+    padding-top: 80px; /* Space below nav bar to show content */
 }
 
 /* Navigation Bar Styling */
-
 nav {
     position: fixed;
     top: 0;
@@ -19,6 +24,12 @@ nav {
     padding: 15px 40px;
     color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Make sure nav stays on top */
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
 }
 
 .webHeader h2 {
@@ -69,6 +80,13 @@ nav {
     background-color: #03A9A9;
 }
 
+/* Profile section */
+.profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .profile .avatar {
     width: 40px;
     height: 40px;
@@ -77,35 +95,18 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.profile .avatar:hover {
-    transform: scale(1.1);
-}
-
-/* Profile section */
-.profile {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-/* Profile picture */
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-}
-
 .avatar:hover {
     transform: scale(1.1);
 }
 
 /* Dropdown Menu */
 .profile-dropdown {
+    display: none;
     position: absolute;
-    top: 50px; /* Adjust based on avatar height */
+    top: 40px;
+    width: 150px;
     right: 0;
-    z-index: 1000; /* higher than alert bar */
+    z-index: 1000;
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -128,7 +129,6 @@ nav {
 .profile:hover .profile-dropdown {
     display: block;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {

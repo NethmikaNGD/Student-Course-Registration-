@@ -1,3 +1,5 @@
 1	oma	Cyber Security Course for Beginners - Level 01	Learn the Security Fundamentals required for your everyday online presence.	Omasha Gayandi	45.0	Beginner	course-1041-What-is-Cyber-Security.jpg	Science, Programming
 2	oma	Digital Marketer Career Accelerator	Your career in digital marketing starts here. Fast-track learning and interview prep. Grow skills	Omasha Gayandi	30.65	Beginner	hello.png	History, Arts
 3	oma	Social Media Marketing	social media marketing has a big income	Yehen Seniru	20.0	Beginner	gettyimages-599703424-612x612.jpg	Arts
+4	oma	Data Scientist Career Accelerator	Your career in data science starts here. Fast-track learning and interview prep. Grow skills at your	Dineth Nethmika	209.0	Beginner	GGDaata.png	Science, Programming
+5	WebAdminBoss	Break into a data science career.	Get the skills, structure, and hands-on experience to launch your career.	Dineth Nethmika	0.0	Intermediate	UML_use_case_example-800x707.webp	No interests selected

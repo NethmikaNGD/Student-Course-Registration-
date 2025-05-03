@@ -89,6 +89,7 @@ public class createCourseServlet extends HttpServlet {
             ) {
                 courseWriter.write(courseID + "\t" + username + "\t" + coursename + "\t" + courseDescription + "\t" +
                         instructor + "\t" + price + "\t" +level + "\t" + imageFileName + "\t" + interestsList + "\n");
+
                 courseWriter1.write(courseID + "\t" + duration + "\t" + projectCont + "\t" + courseIncuding1 + "\t" + courseIncuding2 + "\t" +courseIncuding3 + "\t" + dis +"\n" );
                 auditWriter.write(time + "\t" + "New_Course_Create" + "\t-> " + courseID + "\t" + username + "\t" + coursename + "\n");
             }

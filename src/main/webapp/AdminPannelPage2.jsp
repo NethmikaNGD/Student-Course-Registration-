@@ -57,8 +57,9 @@
     <div class="navLink">
         <ul>
             <li><a href="home.jsp">Home</a></li>
-            <li><a href="#course">Course</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#course">Course Management</a></li>
+            <li><a href="userManagement.jsp">User Management</a></li>
+            <li><a href="DisplayDataServlet">Dashboard</a></li>
         </ul>
     </div>
     <div class="profile">

@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
-@WebServlet("/ApproveInstructorServlet")
+//@WebServlet("/ApproveInstructorServlet")
 public class ApproveInstructorServlet extends HttpServlet {
 
     private static final String USER_INFO_FILE = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";

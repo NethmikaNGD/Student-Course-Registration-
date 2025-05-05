@@ -1,14 +1,18 @@
 package com.adminPannel;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@WebServlet("/DisplayDataServlet")
+//@WebServlet("/DisplayDataServlet")
 public class DisplayDataServlet extends HttpServlet {
-
     private static final String USER_INFO_FILE = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
     private static final String USER_PASS_FILE = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userPass.txt";
     private static final String COURSE_FILE = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
@@ -114,6 +118,9 @@ public class DisplayDataServlet extends HttpServlet {
 
 
         System.out.println("hellow");
+
+        RequestDispatcher rd = request.getRequestDispatcher("AdminPannelPage2.jsp");
+        rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

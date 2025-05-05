@@ -1,3 +1,3 @@
-2	KaliPorn	kali	roses	KaliPorn@phub.com	2025-04-30	Female	Student	hail.jpg
-1	dina	dineth	nethmika	dina@g.com	2025-05-01	Male	Pending_Instructor	family-doctor-doctor-s-office_23-2148168504.avif
+2	KaliPorn	kali	roses	KaliPorn@phub.com	2025-04-30	Female	kaliporn@phub.com	hail.jpg
+1	dina	dineth	nethmika	dina@g.com	2025-05-01	Male	dina@g.com	family-doctor-doctor-s-office_23-2148168504.avif
 

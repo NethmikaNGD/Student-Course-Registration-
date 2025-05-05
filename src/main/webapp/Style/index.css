@@ -1,135 +1,88 @@
-body{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-*{
-    font-family: Arial, Helvetica, sans-serif;
+/* Background and Body Styling */
+body {
     margin: 0;
     padding: 0;
-}
-.section2{
-    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../image/BGImge.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.section2 .loginForm{
-    background-color: white;
-    padding:30px;
-
-    width: 30%;
+/* Login Form Container */
+.loginForm {
+    background-color: #5AE4A7;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 6px 5px 70px rgba(130, 130, 130, 0.5);
-    position: absolute;
-    top: 25%;
-    right:8%;
-
-
-
-}
-.formheader{
-    font-size: 50px;
-    margin: 10px;
-
-}
-.inputLable{
-    /* border: none; */
-    font-size: 20px;
-    margin: 10px;
-    width: 90%;
-    padding: 5px;
-    border-radius: 6px;
-}
-.loginBtn{
-    color: white;
-    background-color: rgb(84, 185, 85);
-    border: none;
-    padding: 10px;
-    font-size: large;
-    width: 93%;
-    margin: 10px 10px 0px 10px;
-    border-radius: 6px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.loginBtn:hover{
-    background-color: #3f803f;
-}
-
-.forgottLink{
-    text-decoration: none;
-
-
-}
-.containerForget{
-    padding: 10px;
-}
-
-
-
-
-
-
-.section1{
-}
-
-.header{
-    position: absolute;
-    top: 20%;
-    left: 7%;
-}
-.header .webgreat{
-    font-size: 24px;
-}
-.webHeader{
-    font-size: 6pc;
-}
-.PrintError{
-    color: red;
-    text-align: center;
+/* Heading */
+.heade p {
+    font-size: 28px;
     font-weight: bold;
+    color: #137B4D;
+    margin-bottom: 20px;
 }
 
-
-/*model*/
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
+/* Input Fields */
+.inputLable {
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    width: 400px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-.modal-input {
-    width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
+    box-sizing: border-box;
 }
 
-.modal-btn {
-    padding: 10px 20px;
-    background-color: #3b82f6;
+/* Login Button */
+.loginBtn {
+    background-color: #137B4D;
     color: white;
     border: none;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: #15aa67;
+}
+
+/* Forgot Password & Sign Up Links */
+.containerForget {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.forgottLink,
+.containerForget a {
+    color: #0b5c3f;
+    text-decoration: none;
+}
+
+.forgottLink:hover,
+.containerForget a:hover {
+    text-decoration: underline;
+}
+
+/* Error Message */
+.PrintError {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
 }

@@ -69,13 +69,22 @@
 <!--  </servlet-mapping>-->
 
     <servlet>
-      <servlet-name>resetPassServlet</servlet-name>
-      <servlet-class>com.loginServlet.resetPassServlet</servlet-class>
+      <servlet-name>setnewPass</servlet-name>
+      <servlet-class>com.loginServlet.setnewPass</servlet-class>
     </servlet>
     <servlet-mapping>
-      <servlet-name>resetPassServlet</servlet-name>
-      <url-pattern>/resetPassServlet</url-pattern>
+      <servlet-name>setnewPass</servlet-name>
+      <url-pattern>/setnewPass</url-pattern>
     </servlet-mapping>
+
+  <servlet>
+    <servlet-name>resetPassServlet</servlet-name>
+    <servlet-class>com.loginServlet.resetPassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resetPassServlet</servlet-name>
+    <url-pattern>/resetPassServlet</url-pattern>
+  </servlet-mapping>
 
 
   <!--  <servlet>-->

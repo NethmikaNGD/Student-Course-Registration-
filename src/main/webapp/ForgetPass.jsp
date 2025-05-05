@@ -19,6 +19,10 @@
             font-size: 20px;
         }
 
+        .login{
+
+        }
+
 
     </style>
 
@@ -26,6 +30,7 @@
 <body>
 <%
     Boolean isValidUser = (Boolean) session.getAttribute("validUser");
+    String  username = (String) session.getAttribute("username");
 
 %>
 
@@ -63,15 +68,28 @@
         <% } else { %>
         <!-- Show this only when username/email are valid -->
         <div class="loginForm">
-            <form action="resetPassServlet" method="post">
+            <form action="setnewPass" method="post">
                 <div class="heade"><p>Set New Password</p></div>
                 <div>
                     <input class="inputLable" type="text" name="password" placeholder="New Password" required>
+                    <input class="inputLable" type="hidden" name="username2" value="<%= username %>">
                 </div>
 
                 <div>
                     <input class="inputLable" type="password" name="Cpassword"  placeholder="Comfirm Password" required>
                 </div>
+
+                <%
+                    String errorT6 = (String) request.getAttribute("errorT6");
+                    if (errorT6 != null){
+
+                %>
+
+                <p class="PrintError"> <%=errorT6%> </p>
+                <%
+
+                    }
+                %>
                 <button type="submit" class="loginBtn">Save</button>
             </form>
         </div>

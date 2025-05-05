@@ -1,15 +1,2 @@
-1	dineth42	Mathematics
-2	Oma@1	Programming
-3	Laka	Science
-4	WebAdminBoss	Mathematics
-5	Suddi	Mathematics
-6	markallen	Programming
-7	Flash	Programming
-8	dineth42	Mathematics
-9	oma	Science
-10	dineth42	Science
-11	kali	Programming
-12	arrow	Science
-13	sakuRep	Science
-15	yehenseniru	Mathematics
-16	gayan1	Science
+1	dina	Mathematics
+2	KaliPorn	Programming

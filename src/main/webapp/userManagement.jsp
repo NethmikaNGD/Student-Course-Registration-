@@ -79,8 +79,11 @@
                     <td><%= fields[5] %></td>
                     <td><%= fields[6] %></td>
                     <td>
-                        <button><a href="viewProfile.jsp">View Profile</a></button>
-                        <button>Ban</button>
+                        <form action="ViewProfileServlet" method="get">
+                            <button type="submit"  name="userID"  value="<%= fields[0] %>">View Profile</button>
+                            <button>Ban</button>
+                        </form>
+
                     </td>
                 </tr>
                 <%
@@ -131,8 +134,10 @@
                 <td><%= fields[6] %></td>
                 <td><%= fields[7] %></td>
                 <td>
-                    <button><a href="viewProfile.jsp">View Profile</a></button>
-                    <button>Ban</button>
+                    <form action="ViewProfileServlet" method="get">
+                        <button type="submit" name="userID value="<%= fields[0] %>">View Profile</button>
+                        <button>Ban</button>
+                    </form>
                 </td>
             </tr>
             <%

@@ -14,11 +14,11 @@ body{
     margin: 20px;
 }
 /* userProfile */
-.webHeader{
+.webHeader1{
     background-color: aliceblue;
     border-radius: 12px;
     padding: 20px;
-    margin: 20px;
+    margin-bottom: 20px;
 }
 .userProfile{
     width: 15pc;

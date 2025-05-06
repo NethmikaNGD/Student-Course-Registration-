@@ -48,7 +48,7 @@ public class adminLoginServlet extends HttpServlet {
             }
 
             // Forward to home page or admin panel
-            RequestDispatcher rd = request.getRequestDispatcher("AdminPannelPage2.jsp"); // or "AdminPannelPage2"
+            RequestDispatcher rd = request.getRequestDispatcher("DisplayDataServlet"); // or "AdminPannelPage2"
             rd.forward(request, response);
 
         } else {

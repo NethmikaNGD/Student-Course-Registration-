@@ -34,7 +34,7 @@ public class loginServlet extends HttpServlet {
 
         if (username.equals("EnrollEducationAdminPannel") && password.equals("08110607Dineth")) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("AdminPannelPage2.jsp"); // or "AdminPannelPage2"
+            RequestDispatcher rd = request.getRequestDispatcher("DisplayDataServlet"); // or "AdminPannelPage2"
             rd.forward(request, response);
 
         }

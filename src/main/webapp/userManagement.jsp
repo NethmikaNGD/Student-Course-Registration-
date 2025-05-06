@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dinet
@@ -5,6 +7,12 @@
   Time: 9:56 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    List<String> StData = (List<String>) request.getAttribute("StData");
+    List<String> InData = (List<String>) request.getAttribute("InData");
+
+
+%>
 
 <html>
 <head>
@@ -45,30 +53,47 @@
         <div class="title">
             <p class="tit">Student Management Table</p>
         </div>
-
         <div class="tableST">
             <table>
                 <thead>
                 <tr>
-                    <th>STID</th>
+                    <th>UID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Birthday</th>
+                    <th>Gender</th>
                     <th>Action</th>
-
                 </tr>
                 </thead>
                 <tbody>
+                <%
+                    if (StData != null && !StData.isEmpty()) {
+                        for (String item : StData) {
+                            String[] fields = item.split("\t");
+                            if (fields.length >= 8) {
+                %>
                 <tr>
-                    <td>STID23</td>
-                    <td>Dineth Nethmika</td>
-                    <td>Dineth@gmail.com</td>
-                    <td>2005-23-04</td>
+                    <td>UI<%= fields[0] %></td>
+                    <td><%= fields[2] +" "+ fields[3] %></td>
+                    <td><%= fields[4] %></td>
+                    <td><%= fields[5] %></td>
+                    <td><%= fields[6] %></td>
                     <td>
                         <button><a href="viewProfile.jsp">View Profile</a></button>
                         <button>Ban</button>
                     </td>
                 </tr>
+                <%
+                        }
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="5">No instructor data found.</td>
+                </tr>
+                <%
+                    }
+                %>
                 </tbody>
             </table>
         </div>
@@ -81,25 +106,47 @@
         <table>
             <thead>
             <tr>
-                <th>STID</th>
+                <th>UID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Birthday</th>
+                <th>Gender</th>
+                <th>Role</th>
                 <th>Action</th>
 
             </tr>
             </thead>
             <tbody>
+            <%
+                if (InData != null && !InData.isEmpty()) {
+                    for (String item : InData) {
+                        String[] fields = item.split("\t");
+                        if (fields.length >= 8) {
+            %>
             <tr>
-                <td>STID23</td>
-                <td>Dineth Nethmika</td>
-                <td>Dineth@gmail.com</td>
-                <td>2005-23-04</td>
+                <td>UI<%= fields[0] %></td>
+                <td><%= fields[2] +" "+ fields[3] %></td>
+                <td><%= fields[4] %></td>
+                <td><%= fields[5] %></td>
+                <td><%= fields[6] %></td>
+                <td><%= fields[7] %></td>
                 <td>
-                    <button> <a href="viewProfile.jsp">View Profile</a></button>
+                    <button><a href="viewProfile.jsp">View Profile</a></button>
                     <button>Ban</button>
                 </td>
             </tr>
+            <%
+                    }
+                }
+            } else {
+            %>
+            <tr>
+                <td colspan="5">No instructor data found.</td>
+            </tr>
+            <%
+                }
+            %>
+
             </tbody>
         </table>
         </section>

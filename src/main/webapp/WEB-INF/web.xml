@@ -104,6 +104,16 @@
     <url-pattern>/DisplayDataServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>FileReaderServlet</servlet-name>
+    <servlet-class>com.adminPannel.inforFileRead</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FileReaderServlet</servlet-name>
+    <url-pattern>/inforFileRead</url-pattern>
+  </servlet-mapping>
+
   <context-param>
     <description>Location to store uploaded files</description>
     <param-name>file-upload</param-name>

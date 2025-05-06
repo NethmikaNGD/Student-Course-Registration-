@@ -1,5 +1,5 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 <!-- Navigation Bar -->
 <nav>
     <div class="webHeader">
-        <h2 class="headerTxt"> ./EnrollEdu Admin Panel</h2>
+        <h3 class="headerTxt"> ./EnrollEdu Admin Panel</h3>
     </div>
     <div class="searchBar">
         <input class="navSearch" placeholder="Find your Interest Subjects" name="userWant">
@@ -37,7 +37,7 @@
 </nav>
 <!-- End Navigation -->
 
-<section class="webHeader">
+<section class="webHeader1">
     <h2 class="tit">User Profile View</h2>
     <div class="userProfile">
         <img src="Sign-in-Art-1--0fe00843-5dcc-430e-bfd0-eff8d2c9a640-1741359572315.png" alt="userProfile">

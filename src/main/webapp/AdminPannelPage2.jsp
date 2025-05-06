@@ -1,6 +1,3 @@
-<%@ page import="java.io.BufferedReader" %>
-<%@ page import="java.io.FileReader" %>
-<%@ page import="java.io.File" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 
@@ -10,30 +7,8 @@
     int pendingIn = (request.getAttribute("pendingInstructorCount") != null) ? (Integer) request.getAttribute("pendingInstructorCount") : 0;
     int courseCount = (request.getAttribute("courseCount") != null) ? (Integer) request.getAttribute("courseCount") : 0;
 
-    String dataSavePath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
-    File file = new File(dataSavePath);
-
-    List<String[]> studentList = new ArrayList<>();
-    List<String[]> instructorList = new ArrayList<>();
-    List<String[]> pendingInstructorList = new ArrayList<>();
-
-    if (file.exists()) {
-        BufferedReader read = new BufferedReader(new FileReader(file));
-        String data;
-        while ((data = read.readLine()) != null) {
-            String[] details = data.split("\t");
-            if (details.length == 9) {
-                if ("Student".equals(details[7])) {
-                    studentList.add(details);
-                } else if ("Instructor".equals(details[7])) {
-                    instructorList.add(details);
-                }else {
-                    pendingInstructorList.add(details);
-                }
-            }
-        }
-        read.close();
-    }
+    List<String> studentList = (List<String>) request.getAttribute("StData");
+    List<String> instructorList = (List<String>) request.getAttribute("InData");
 %>
 
 <html>
@@ -42,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/adminStyle.css">
     <link rel="stylesheet" href="Style/Navstyle.css">
-    <title>Admin DashBoard</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
 
@@ -58,7 +33,7 @@
         <ul>
             <li><a href="home.jsp">Home</a></li>
             <li><a href="#course">Course Management</a></li>
-            <li><a href="userManagement.jsp">User Management</a></li>
+            <li><a href="inforFileRead">User Management</a></li>
             <li><a href="DisplayDataServlet">Dashboard</a></li>
         </ul>
     </div>
@@ -70,7 +45,6 @@
         </div>
     </div>
 </nav>
-<!-- End Navigation -->
 
 <div class="header">
     <h2>Web Summary</h2>
@@ -80,35 +54,36 @@
 <section class="actionBar">
     <section class="actionBarDiv1">
         <div class="container">
-            <div class="number"><p class="pNumber"><%=stCount%></p></div>
+            <div class="number"><p class="pNumber"><%= stCount %></p></div>
             <div class="title"><p class="pTitle">Number of Students</p></div>
         </div>
     </section>
 
     <section class="actionBarDiv1">
         <div class="container">
-            <div class="number"><p class="pNumber"><%=inCount%></p></div>
+            <div class="number"><p class="pNumber"><%= inCount %></p></div>
             <div class="title"><p class="pTitle">Number of Instructors</p></div>
         </div>
     </section>
 
     <section class="actionBarDiv1">
         <div class="container">
-            <div class="number"><p class="pNumber"><%=courseCount%></p></div>
+            <div class="number"><p class="pNumber"><%= courseCount %></p></div>
             <div class="title"><p class="pTitle">Number of Courses</p></div>
         </div>
     </section>
 
     <section class="actionBarDiv1">
         <div class="container">
-            <div class="number"><p class="pNumber"><%=pendingIn%></p></div>
+            <div class="number"><p class="pNumber"><%= pendingIn %></p></div>
             <div class="title"><p class="pTitle">Pending Instructors</p></div>
         </div>
     </section>
 </section>
-<!-- End Summary Cards -->
 
+<!-- Display Tables -->
 <section class="display">
+
     <!-- Students Table -->
     <section class="displayStudents">
         <div class="header1">
@@ -125,13 +100,16 @@
                 </thead>
                 <tbody>
                 <%
-                    for (String[] details : studentList) {
+                    if (studentList != null && !studentList.isEmpty()) {
+                        for (String item : studentList) {
+                            String[] details = item.split("\t");
+                            if (details.length >= 9) {
                 %>
                 <tr>
-                    <td>ST<%=details[0]%></td>
-                    <td><%=details[2]%> <%=details[3]%></td>
-                    <td><%=details[4]%></td>
-                    <td><%=details[5]%></td>
+                    <td>ST<%= details[0] %></td>
+                    <td><%= details[2] %> <%= details[3] %></td>
+                    <td><%= details[4] %></td>
+                    <td><%= details[5] %></td>
                     <td>
                         <form action="banUser.jsp" method="post">
                             <input type="hidden" name="id" value="<%= details[0] %>">
@@ -139,6 +117,14 @@
                             <button class="ban-btn">Ban</button>
                         </form>
                     </td>
+                </tr>
+                <%
+                        }
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="5">No student data found.</td>
                 </tr>
                 <% } %>
                 </tbody>
@@ -162,62 +148,31 @@
                 </thead>
                 <tbody>
                 <%
-                    for (String[] details : instructorList) {
+                    if (instructorList != null && !instructorList.isEmpty()) {
+                        for (String item : instructorList) {
+                            String[] details = item.split("\t");
+                            if (details.length >= 9) {
                 %>
                 <tr>
-                    <td>IN<%=details[0]%></td>
-                    <td><%=details[2]%> <%=details[3]%></td>
-                    <td><%=details[4]%></td>
-                    <td><%=details[5]%></td>
+                    <td>IN<%= details[0] %></td>
+                    <td><%= details[2] %> <%= details[3] %></td>
+                    <td><%= details[4] %></td>
+                    <td><%= details[5] %></td>
                     <td>
                         <form action="banUser.jsp" method="post">
                             <input type="hidden" name="id" value="<%= details[0] %>">
-                            <input type="hidden" name="role" value="student">
+                            <input type="hidden" name="role" value="instructor">
                             <button class="ban-btn">Ban</button>
                         </form>
                     </td>
                 </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Pending Instructors Table -->
-    <section class="displayInstructors">
-        <div class="header1">
-            <h2>Pending Instructors' Table</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>INID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Birthday</th>
-                    <th>Action</th>
-
-                </tr>
-                </thead>
-                <tbody>
                 <%
-                    for (String[] details : pendingInstructorList) {
+                        }
+                    }
+                } else {
                 %>
                 <tr>
-                    <td>IN<%=details[0]%></td>
-                    <td><%=details[2]%> <%=details[3]%></td>
-                    <td><i>Not Provided</i></td>
-                    <td><%=details[5]%></td>
-                    <td>
-                        <form method="post" action="ApproveInstructorServlet" style="display:inline;">
-                            <input type="hidden" name="id"  value="${user[0]}">
-                            <input type="hidden" name="fullData" value="<%=String.join("\t", details)%>">
-                            <button type="submit" class="approve-btn">Approve</button>
-                        </form>
-                        <form method="post" action="ApproveInstructorServlet" style="display:inline;">
-                            <input type="hidden" name="id" value="<%=details[0]%>">
-                            <button type="submit" class="reject-btn">Reject</button>
-                        </form>
-                    </td>
+                    <td colspan="5">No instructor data found.</td>
                 </tr>
                 <% } %>
                 </tbody>

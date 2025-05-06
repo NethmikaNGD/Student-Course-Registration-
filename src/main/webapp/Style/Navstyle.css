@@ -1,13 +1,13 @@
-/* Reset default styles */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+/*!* Reset default styles *!*/
+/** {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*    font-family: Arial, sans-serif;*/
 
-}
+/*}*/
 
-/* Body padding to prevent overlap with fixed nav */
+/*!* Body padding to prevent overlap with fixed nav *!*/
 body {
     padding-top: 80px; /* Space below nav bar to show content */
 }

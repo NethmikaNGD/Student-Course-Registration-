@@ -1,0 +1,68 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+}
+
+.tit{
+    margin: 20px;
+}
+/* userProfile */
+.webHeader{
+    background-color: aliceblue;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+}
+.userProfile{
+    width: 15pc;
+    height: 15pc;
+    background-color: brown;
+    border-radius: 6px;
+    position: relative;
+    left: 6pc;
+}
+.userProfile img{
+    width: 15pc;
+    height: 15pc;
+    border-radius: 6px;
+}
+.userDetail{
+    font-size: 20px;
+    display: flex;
+    justify-content:space-evenly;
+    margin: 10px;
+}
+.userDetail2{
+    font-size:20px ;
+    margin-left: 3.8pc;
+    margin-top: 20px;
+}
+.userDetail2 p{
+    margin: 10px;
+}
+.couserDisplay{
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+}
+.enrollSection{
+    background-color: aliceblue;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.couserheader{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 25px;
+}

@@ -1,3 +1,3 @@
-1	spicy	dineth@gmail.com	dineth	Pending_Instructor
+1	spicy	dineth@gmail.com	dineth	Instructor
 2	fazz	fazz@gg.com	5555	Student
-3	kusum	KaliPorn@phub.com	1234	Student
+3	Jhon123	Senura12@gmail.com	0987	Pending_Instructor

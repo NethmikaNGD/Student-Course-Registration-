@@ -1,3 +1,3 @@
-1	spicy	Dineth	Nethmika	dineth@gmail.com	2025-05-07	Male	Pending_Instructor	gettyimages-599703424-612x612.jpg
+1	spicy	Dineth	Nethmika	dineth@gmail.com	2025-05-07	Male	Instructor	gettyimages-599703424-612x612.jpg
 2	fazz	Jhon	fazz	fazz@gg.com	2025-05-08	Female	Student	family-doctor-doctor-s-office_23-2148168504.avif
-3	kusum	Kusum	karuna	KaliPorn@phub.com	2025-05-22	Female	Student	davatar.webp
+3	Jhon123	Senura	Herath	Senura12@gmail.com	1994-10-20	Male	Pending_Instructor	7206.jpg

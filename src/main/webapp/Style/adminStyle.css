@@ -132,3 +132,7 @@ h2 {
     text-align: center;
     margin-top: 40px;
 }
+.actionBtn {
+    display: flex;
+    justify-items: center;
+}

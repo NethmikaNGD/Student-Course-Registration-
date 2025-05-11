@@ -3,3 +3,4 @@
 3	oma	Social Media Marketing	social media marketing has a big income	Yehen Seniru	20.0	Beginner	gettyimages-599703424-612x612.jpg	Arts
 4	oma	Data Scientist Career Accelerator	Your career in data science starts here. Fast-track learning and interview prep. Grow skills at your	Dineth Nethmika	209.0	Beginner	GGDaata.png	Science, Programming
 5	WebAdminBoss	Break into a data science career.	Get the skills, structure, and hands-on experience to launch your career.	Dineth Nethmika	0.0	Intermediate	UML_use_case_example-800x707.webp	No interests selected
+8	spicy	Barista and Bartender	Here are concise and professional job descriptions for both Barista and Bartender roles, suitable fo	dilshan dissanayaka	150.0	Beginner	clear.jpg	Arts

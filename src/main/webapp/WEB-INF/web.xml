@@ -99,6 +99,7 @@
     <servlet-name>DisplayData</servlet-name>
     <servlet-class>com.adminPannel.DisplayDataServlet</servlet-class>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>DisplayData</servlet-name>
     <url-pattern>/DisplayDataServlet</url-pattern>
@@ -112,6 +113,16 @@
   <servlet-mapping>
     <servlet-name>FileReaderServlet</servlet-name>
     <url-pattern>/inforFileRead</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewProfileServlet</servlet-name>
+    <servlet-class>com.adminPannel.viewProfile.ViewProfileServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ViewProfileServlet</servlet-name>
+    <url-pattern>/ViewProfileServlet</url-pattern>
   </servlet-mapping>
 
   <context-param>

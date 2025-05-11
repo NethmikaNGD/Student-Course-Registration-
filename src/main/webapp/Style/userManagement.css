@@ -6,8 +6,8 @@
 
 .tble{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5px;
 
 }
 

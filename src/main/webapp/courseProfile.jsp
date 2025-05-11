@@ -72,6 +72,26 @@
         out.println("<h2>Course not found</h2>");
         return;
     }
+    String name = null;
+    boolean enrolled = false;
+    String enrollFile = "D:\\Project\\LMS\\src\\main\\Database\\EnrollList\\courseEnroll";
+
+    try (BufferedReader enrollReader = new BufferedReader(new FileReader(enrollFile))) {
+        String line;
+        while ((line = enrollReader.readLine()) != null) {
+            String[] data = line.split("\t");
+            if (data.length < 3) continue;
+
+            if (data[0].equals(userID) && data[2].equals(courseId)) {
+                enrolled = true;
+                break;
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Enrollment check error: " + e.getMessage());
+    }
+    name = enrolled ? "working" : "not working";
+
 %>
 
 <!DOCTYPE html>
@@ -133,8 +153,27 @@
                     <p class="rate">$ <%=course[5]%></p>
                 </div>
 
+<%--Enroll here--%>
                 <div class="enrollBTN">
-                    <button class="Start">Start</button>
+                    <form action="enrollServlet" method="post">
+                        <input type="hidden" value="<%= course[0] %>" name="courseId">
+                        <input type="hidden" value="<%= userID %>" name="userID">
+                        <input type="hidden" value="<%= Uname %>" name="username">
+                        <input type="hidden" value="<%= course[1] %>" name="courseOwner">
+                        <%
+                            if (enrolled){
+                        %>
+                            <button class="Start" type="submit" name="Enrolled" value="true">Enrolled</button>
+                        <%
+                            }else{
+                        %>
+                            <button class="Start" type="submit" name="Enrolled" value="true">Start</button>
+                        <%
+                            }
+                        %>
+
+                    </form>
+
                     <p class="countEnrolled">11,550 learners enrolled</p>
                 </div>
             </div>
@@ -180,6 +219,7 @@
             <li class="point">Using promises and async/await for async programming</li>
         </div>
     </section>
+
 </section>
 
 </body>

@@ -125,6 +125,16 @@
     <url-pattern>/ViewProfileServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>enrollServlet</servlet-name>
+    <servlet-class>com.courseProfile.enrollServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>enrollServlet</servlet-name>
+    <url-pattern>/enrollServlet</url-pattern>
+  </servlet-mapping>
+
   <context-param>
     <description>Location to store uploaded files</description>
     <param-name>file-upload</param-name>

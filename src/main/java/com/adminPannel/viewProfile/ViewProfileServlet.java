@@ -56,6 +56,7 @@ public class ViewProfileServlet extends HttpServlet {
             }
 
 
+
         }else {
             fileDataStore = file.getInData();
             for(String data : fileDataStore) {

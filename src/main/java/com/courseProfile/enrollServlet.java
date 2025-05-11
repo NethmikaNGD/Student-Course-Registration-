@@ -1,5 +1,7 @@
 package com.courseProfile;
 
+import com.util.ComCode;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +21,15 @@ public class enrollServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        ComCode comCode = new ComCode();
+
+        String time =comCode.getTime();
+
         String courseID = req.getParameter("courseId");
         String userID = req.getParameter("userID");
         String username = req.getParameter("username");
         String courseOwner = req.getParameter("courseOwner");
+        String courseTitle = req.getParameter("courseTitle");
 
         boolean enrolled = false;
 
@@ -30,7 +37,7 @@ public class enrollServlet extends HttpServlet {
 
 
         try (FileWriter fw = new FileWriter(SAVE_FILE , true)) {
-            fw.write(userID + "\t" + username + "\t" + courseID + "\t" + courseOwner + "\n" );
+            fw.write(userID + "\t" + username + "\t" + courseID + "\t" + courseOwner +"\t"+ courseTitle +"\t"+ time+ "\n" );
             enrolled = true;
             System.out.println("Enroll Success....");
         }catch(IOException e){

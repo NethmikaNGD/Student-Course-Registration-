@@ -274,3 +274,9 @@
 2025-05-11 13:07:38	userLogin	->	4	Testing	Student
 2025-05-11 13:12:39	userLogin	->	4	Testing	Student
 2025-05-11 13:18:07	userLogin	->	2	fazz	Student
+2025-05-11 13:23:27	userLogin	->	1	spicy	Instructor
+2025-05-11 13:26:12	New_Course_Create	-> 7	spicy	Jumpstart to 2D Game Development
+2025-05-11 13:26:57	userLogin	->	4	Testing	Student
+2025-05-11 13:29:37	New_Course_Create	-> 8	spicy	Flutter & Dart - The Complete Guide
+2025-05-11 14:18:54	userLogin	->	4	Testing	Student
+2025-05-11 14:37:30	userLogin	->	2	fazz	Student

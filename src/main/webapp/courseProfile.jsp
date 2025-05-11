@@ -160,6 +160,7 @@
                         <input type="hidden" value="<%= userID %>" name="userID">
                         <input type="hidden" value="<%= Uname %>" name="username">
                         <input type="hidden" value="<%= course[1] %>" name="courseOwner">
+                        <input type="hidden" value="<%= course[2] %>" name="courseTitle">
                         <%
                             if (enrolled){
                         %>

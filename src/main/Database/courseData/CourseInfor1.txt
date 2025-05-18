@@ -4,10 +4,3 @@
 4	40	8	Statistics, Python, & Deep Learning	SQL & MySQL	Interview Prep	Career Accelerators courses include certificates of completion you can add to your resume, portfolio, or LinkedIn profile.
 5	12	0	3top-rated courses	SQL & MySQL	Interview Prep	SQL - MySQL for Data Analytics and Business Intelligence
 SQL that will get you hired â SQL for Data Science, Data Engineering, Business Analysis, Marketing, and Data Management
-6	2	15	The Students will understand the basic concepts of Cyber Security.	The Students will be able to take precautionary measures to stay safe online.	GenAI for Digital Marketers	A Barista is responsible for preparing and serving coffee and other beverages, maintaining cleanliness and organization of the workspace, and providing excellent customer service. Duties include operating coffee machines, taking customer orders, handling payments, and ensuring product quality and consistency.
-
-A Bartender prepares and serves alcoholic and non-alcoholic drinks to customers in a bar or restaurant setting. Responsibilities include mixing cocktails, managing bar inventory, maintaining cleanliness, checking customer identification, and ensuring a safe and enjoyable environment for guests.
-
-
-7	20	4	Statistics, Python, & Deep Learning	SQL & MySQL	Interview Prep	Acquire Game Dev Skills: Gain level design, animation, enemy AI, power-ups, UI design, and apply design patterns like singletons and event buses.
-8	2	12	3top-rated courses	SQL & MySQL	Interview Prep	Learn all the basics without stopping after them: Dive deeply into Flutter & Dart and become an advanced developer

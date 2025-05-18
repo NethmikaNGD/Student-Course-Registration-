@@ -79,11 +79,11 @@
                     <td><%= fields[5] %></td>
                     <td><%= fields[6] %></td>
                     <td>
-                        <form action="ViewProfileServlet" method="post">
-                            <input type="hidden" value="<%= fields[7] %>" name="role">
-                            <input type="hidden" name="userID"  value="<%=fields[0]%>">
-                            <button type="submit">View Profile</button>
+                        <form action="ViewProfileServlet" method="get">
+                            <button type="submit"  name="userID"  value="<%= fields[0] %>">View Profile</button>
+                            <button>Ban</button>
                         </form>
+
                     </td>
                 </tr>
                 <%
@@ -134,10 +134,9 @@
                 <td><%= fields[6] %></td>
                 <td><%= fields[7] %></td>
                 <td>
-                    <form action="ViewProfileServlet" method="post">
-                        <input type="hidden" value="<%= fields[7] %>" name="role">
-                        <input type="hidden" name="userID"  value="<%=fields[0]%>">
-                        <button type="submit">View Profile</button>
+                    <form action="ViewProfileServlet" method="get">
+                        <button type="submit" name="userID value="<%= fields[0] %>">View Profile</button>
+                        <button>Ban</button>
                     </form>
                 </td>
             </tr>

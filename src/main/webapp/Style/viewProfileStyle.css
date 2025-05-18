@@ -34,7 +34,7 @@ body{
     border-radius: 6px;
 }
 .userDetail{
-    font-size: 17px;
+    font-size: 20px;
     display: flex;
     justify-content:space-evenly;
     margin: 10px;

@@ -1,6 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.util.fileReading" %>
 
 <%
     int stCount = (request.getAttribute("studentCount") != null) ? (Integer) request.getAttribute("studentCount") : 0;
@@ -8,25 +7,8 @@
     int pendingIn = (request.getAttribute("pendingInstructorCount") != null) ? (Integer) request.getAttribute("pendingInstructorCount") : 0;
     int courseCount = (request.getAttribute("courseCount") != null) ? (Integer) request.getAttribute("courseCount") : 0;
 
-//    List<String> studentList = (List<String>) request.getAttribute("StData");
-//    List<String> instructorList = (List<String>) request.getAttribute("InData");
-
-    final String filepath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
-    String uID = null , username = null, firstName  = null, lastName = null, email = null , birthday = null,gender = null, urole = null , avatar = null;
-
-    List<String> studentList = new ArrayList<>();
-    List<String> instructorList = new ArrayList<>();
-
-    fileReading readData = new fileReading(filepath);
-    readData.readFile();
-
-    studentList = readData.getStData();
-    instructorList = readData.getInData();
-
-
-
-
-
+    List<String> studentList = (List<String>) request.getAttribute("StData");
+    List<String> instructorList = (List<String>) request.getAttribute("InData");
 %>
 
 <html>
@@ -161,7 +143,6 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Birthday</th>
-                    <th>Role</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -170,14 +151,13 @@
                     if (instructorList != null && !instructorList.isEmpty()) {
                         for (String item : instructorList) {
                             String[] details = item.split("\t");
-                            if (details.length >= 9 && details[7].equals("Instructor") ) {
+                            if (details.length >= 9) {
                 %>
                 <tr>
                     <td>IN<%= details[0] %></td>
                     <td><%= details[2] %> <%= details[3] %></td>
                     <td><%= details[4] %></td>
                     <td><%= details[5] %></td>
-                    <td><%= details[7] %></td>
                     <td>
                         <form action="banUser.jsp" method="post">
                             <input type="hidden" name="id" value="<%= details[0] %>">
@@ -199,62 +179,6 @@
             </table>
         </div>
     </section>
-
-
-    <!-- Pending Instructors Table -->
-    <section class="displayInstructors">
-        <div class="header1">
-            <h2>Pending Instructors' Table</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>INID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Birthday</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    if (instructorList != null && !instructorList.isEmpty()) {
-                        for (String item : instructorList) {
-                            String[] details = item.split("\t");
-                            if (details.length >= 9 && details[7].equals("Pending_Instructor") ) {
-                %>
-                <tr>
-                    <td>IN<%= details[0] %></td>
-                    <td><%= details[2] %> <%= details[3] %></td>
-                    <td><%= details[4] %></td>
-                    <td><%= details[5] %></td>
-                    <td><%= details[7] %></td>
-                    <td>
-                        <form action="banUser.jsp" method="post">
-                            <input type="hidden" name="id" value="<%= details[0] %>">
-                            <input type="hidden" name="role" value="instructor">
-                            <div class="actionBtn">
-                                <button class="Approve-btn">Approve</button>
-                                <button class="ban-btn">Ban</button>
-                            </div>
-
-                        </form>
-                    </td>
-                </tr>
-                <%
-                        }
-                    }
-                } else {
-                %>
-                <tr>
-                    <td colspan="5">No instructor data found.</td>
-                </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
 
 </section>
 

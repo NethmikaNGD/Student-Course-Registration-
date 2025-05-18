@@ -7,31 +7,41 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 /* Login Form Container */
 .loginForm {
     background-color: #5AE4A7;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 20px auto;
 }
 
 /* Heading */
-.heade p {
+.heade p,
+.heade h2 {
     font-size: 28px;
     font-weight: bold;
     color: #137B4D;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Layout */
+form {
+    width: 100%;
+    max-width: 500px;
 }
 
 /* Input Fields */
@@ -41,8 +51,41 @@ body {
     border-radius: 6px;
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin: 8px 0;
     box-sizing: border-box;
+    background-color: white;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 10px;
+    color: #137B4D;
+    font-weight: bold;
+}
+
+/* Radio and Checkbox Groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    margin-top: 0;
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
 }
 
 /* Login Button */
@@ -53,7 +96,7 @@ body {
     padding: 12px;
     font-size: 16px;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 20px;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -85,4 +128,45 @@ body {
     color: red;
     margin-top: 10px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .loginForm {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .radio-group,
+    .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
+/* File Input Styling */
+input[type="file"] {
+    background-color: white;
+    padding: 8px;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Select Styling */
+select.inputLable {
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23137B4D%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px auto;
+    padding-right: 30px;
 }

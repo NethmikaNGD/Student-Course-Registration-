@@ -40,5 +40,3 @@ public class fileReading {
         return inData;
     }
 }
-
-

@@ -13,32 +13,36 @@ import java.util.*;
 public class profileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    //default constructor
     public profileServlet() {
         super();
     }
 
+    //doGet() Method - Handles & visits the profile page (GET request).
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        // Retrieve session
+        // Retrieve current user's session and their username.
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
 
-        if (username == null) {
-            response.sendRedirect("index.jsp"); // Redirect if not logged in
+        if (username == null) { //If no user is logged in (no username), redirect to login page.
+            response.sendRedirect("index.jsp");
             return;
         }
 
         String userDataPath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\userInfor.txt";
         boolean userFound = false;
 
+        // Opens the user data file for reading
         try (BufferedReader reader = new BufferedReader(new FileReader(userDataPath))) {
             String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split("\t");
-                if (data.length < 8) continue;
+            while ((line = reader.readLine()) != null) { //Reads each line of the file
+                String[] data = line.split("\t");   //splits it by tabs,
+                if (data.length < 8) continue;      //checks if it's the current user.
 
-                if (data[0].equals(username)) { // Check if the username matches
+                //Stores user data in the session (temporary storage) to display on profile page.
+                if (data[0].equals(username)) {
                     session.setAttribute("userID", data[0]);
                     session.setAttribute("Fname", data[1]);
                     session.setAttribute("Lname", data[2]);
@@ -56,20 +60,22 @@ public class profileServlet extends HttpServlet {
         }
 
         if (!userFound) {
-            session.invalidate(); // Clear session if user not found
+            session.invalidate(); // If user not found, clear session and redirect to login.
             response.sendRedirect("index.jsp");
             return;
         }
 
-        // Forward to profile page
+        // Shows the profile.jsp page with the user's data.
         RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
         dispatcher.forward(request, response);
     }
 
+    // doPost() Method - Handles profile updates
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        HttpSession session = request.getSession();
+        //Again checks if user is logged in
+        HttpSession session = request.getSession(); //Runs when user submits the profile update form (POST request)
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
@@ -80,10 +86,11 @@ public class profileServlet extends HttpServlet {
         String extraDataPath = "D:\\Project\\LMS\\src\\main\\Database\\userRegister\\extraData.txt";
         String auditLogPath = "D:\\Project\\LMS\\src\\main\\Database\\adminLog\\AuditLog.txt";
 
+        // Creates a timestamp for the audit log
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateTime = formatter.format(new Date());
 
-        // Get updated profile data
+        // Get updated profile data from the form
         String jobTitle = request.getParameter("jobTitle");
         String phoneNo = request.getParameter("phoneNo");
         String address = request.getParameter("address");
@@ -96,10 +103,11 @@ public class profileServlet extends HttpServlet {
         session.setAttribute("Email", email);
         session.setAttribute("Bday", birthday);
 
-        // Read existing data & update the current user's info
+        // Prepares to read and update the extra data file.
         List<String> fileContent = new ArrayList<>();
         boolean userExists = false;
 
+        // Reads the file line by line, updating the current user's data if found
         try (BufferedReader reader = new BufferedReader(new FileReader(extraDataPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -116,12 +124,12 @@ public class profileServlet extends HttpServlet {
             System.out.println("Error reading extraData file: " + e.getMessage());
         }
 
-        // If user not found in file, append new entry
+        // If user not in file, adds them as a new entry.
         if (!userExists) {
             fileContent.add(username + "\t" + jobTitle + "\t" + phoneNo + "\t" + address + "\t" + email + "\t" + site + "\t" + edu + "\t" + birthday);
         }
 
-        // Write the updated content back to the file
+        // Save the updated content back to the file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(extraDataPath, false))) {
             for (String line : fileContent) {
                 writer.write(line);
@@ -131,7 +139,7 @@ public class profileServlet extends HttpServlet {
             System.out.println("Error writing extraData file: " + e.getMessage());
         }
 
-        // Log the update in audit log
+        // Logs that this user updated their profile
         try (FileWriter auditlog = new FileWriter(auditLogPath, true)) {
             auditlog.write(dateTime + "\t" + "updatedProfile" + "\t" + username + "\n");
         } catch (IOException e) {

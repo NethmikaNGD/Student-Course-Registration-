@@ -26,7 +26,6 @@ public class createCourseServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-
         // Get current timestamp
         ComCode CommonJavaCodes = new ComCode();
 

@@ -1,5 +1,7 @@
 package com.profileServlet;
 
+import com.util.CourseFileReading;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -138,6 +140,18 @@ public class profileServlet extends HttpServlet {
             System.out.println("Error writing audit log: " + e.getMessage());
         }
 
+//        course file reading
+
+        final String courseFile = "D:\\Project\\LMS\\src\\main\\Database\\courseData\\CourseInfor.txt";
+        List<String> courseData = new ArrayList<>();
+
+        CourseFileReading coursefile = new CourseFileReading();
+        coursefile.setFileName(courseFile);
+        coursefile.readFile();
+        courseData = coursefile.getCouseList();
+
+
+        session.setAttribute("courseData", courseData);
         // Redirect to profile page to prevent form resubmission issue
         response.sendRedirect("profile.jsp");
     }
